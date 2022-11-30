@@ -28,6 +28,8 @@ namespace Assets._2D_RPG_Prototype.Code
         {
             if (collision.transform.TryGetComponent<PlayerMovement>(out var playerMovement))
             {
+                playerMovement.SetMovementState(false);
+
                 ServiceProvider.SaveLoadService.PlayerData.TransitionPointKey = _key;
                 ServiceProvider.SceneLoader.LoadScene(_targetSceneName);
             }

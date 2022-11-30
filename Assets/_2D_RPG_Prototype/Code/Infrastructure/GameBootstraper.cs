@@ -1,6 +1,5 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets._2D_RPG_Prototype.Code.Infrastructure
 {
@@ -14,7 +13,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
         {
             InitServices();
 
-            _sceneLoader.LoadScene("SampleScene");
+            _sceneLoader.LoadScene("Countryside");
         }
 
         private void InitServices()

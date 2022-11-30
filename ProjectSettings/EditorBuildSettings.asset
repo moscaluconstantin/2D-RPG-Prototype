@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/_2D_RPG_Prototype/Scenes/boot.unity
     guid: 39edd9aca9800ea4684392b865840c9b
   - enabled: 1
-    path: Assets/_2D_RPG_Prototype/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/_2D_RPG_Prototype/Scenes/Countryside.unity
+    guid: cfaeba38bcd47b64f86f1daeadf41249
   - enabled: 1
-    path: Assets/_2D_RPG_Prototype/Scenes/SampleScene2.unity
-    guid: acd04af5461f62446ade22c585c7b7f0
+    path: Assets/_2D_RPG_Prototype/Scenes/Town.unity
+    guid: a7c7f2ded8343294fac28cff9e131d5d
   m_configObjects: {}

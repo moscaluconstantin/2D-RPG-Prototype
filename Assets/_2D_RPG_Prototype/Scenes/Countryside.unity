@@ -1996,7 +1996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8062559144322480158, guid: b9de0d2882d92e64c9a5dfc45e5d4a6f, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8062559144322480158, guid: b9de0d2882d92e64c9a5dfc45e5d4a6f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7977,6 +7977,79 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4bef703335b266b4f804c9d4ca97597f, type: 3}
+--- !u!1001 &1886716766
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: _key
+      value: Countryside-Town
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: _playerLoader
+      value: 
+      objectReference: {fileID: 4776837236291176931}
+    - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: _targetSceneName
+      value: Town
+      objectReference: {fileID: 0}
+    - target: {fileID: 2250861302282158972, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_Name
+      value: Scene Transition Point
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806263408057343256, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870170137459119620, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
 --- !u!1 &1978341571
 GameObject:
   m_ObjectHideFlags: 0
@@ -8021,7 +8094,7 @@ Transform:
   - {fileID: 1601245345}
   - {fileID: 118278555}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4776837236291176930
 PrefabInstance:
@@ -8078,6 +8151,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Loader
       objectReference: {fileID: 0}
+    - target: {fileID: 4776837236203055335, guid: 512fca23c58492249a22949722047013, type: 3}
+      propertyPath: _tilemap
+      value: 
+      objectReference: {fileID: 1601245347}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 512fca23c58492249a22949722047013, type: 3}
 --- !u!114 &4776837236291176931 stripped

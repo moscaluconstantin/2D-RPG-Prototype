@@ -15,7 +15,7 @@ namespace Assets._2D_RPG_Prototype.Code
 
         [Header("Gizmos")]
         [SerializeField] private Color _gizmosColor;
-        [SerializeField] private Vector3 _gizmosBoxSize;
+        [SerializeField] private Vector2 _gizmosBoxSize;
         [SerializeField] private Color _gizmosEntryPointColor;
         [SerializeField] private float _gizmosEntryPointRadius;
 
@@ -44,7 +44,7 @@ namespace Assets._2D_RPG_Prototype.Code
         private void OnDrawGizmos()
         {
 #if UNITY_EDITOR
-            Handles.DrawSolidRectangleWithOutline(new Rect(transform.position - _gizmosBoxSize / 2, _gizmosBoxSize), _gizmosColor, _gizmosColor);
+            Handles.DrawSolidRectangleWithOutline(new Rect((Vector2)transform.position - _gizmosBoxSize / 2, _gizmosBoxSize), _gizmosColor, _gizmosColor);
 
             Handles.color = _gizmosEntryPointColor;
             Handles.DrawSolidDisc(_entryPoint.position, Vector3.forward, _gizmosEntryPointRadius);

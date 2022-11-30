@@ -89,7 +89,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 2, y: 3.3}
   m_EdgeRadius: 0
 --- !u!114 &1155325812232346585
 MonoBehaviour:
@@ -103,11 +103,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e12fad31438644ca2fcbc41bf18c17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _key: transition1
+  _key: Countryside-Town
   _targetSceneName: 
   _entryPoint: {fileID: 7870170137459119620}
   _playerLoader: {fileID: 0}
   _gizmosColor: {r: 1, g: 0, b: 0, a: 1}
-  _gizmosBoxSize: {x: 1, y: 2, z: 0}
+  _gizmosBoxSize: {x: 2, y: 3.3, z: 0}
   _gizmosEntryPointColor: {r: 0, g: 0.0035750866, b: 1, a: 1}
   _gizmosEntryPointRadius: 0.3

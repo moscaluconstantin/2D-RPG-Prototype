@@ -72,7 +72,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8062559144322480159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,7 +88,6 @@ MonoBehaviour:
   _movementSpeed: 4
   _rigidBody: {fileID: 8062559144322480152}
   _animator: {fileID: 1210429630745946690}
-  input: {x: 0, y: 0}
 --- !u!114 &1210429630745946690
 MonoBehaviour:
   m_ObjectHideFlags: 0

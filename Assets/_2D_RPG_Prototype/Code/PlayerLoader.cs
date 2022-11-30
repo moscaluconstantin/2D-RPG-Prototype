@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace Assets._2D_RPG_Prototype.Code
 {
     public class PlayerLoader : MonoBehaviour
     {
         [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private Tilemap _tilemap;
 
         public GameObject Player { get; set; }
+        public Tilemap Tilemap => _tilemap;
 
         private void Awake()
         {
@@ -19,6 +22,7 @@ namespace Assets._2D_RPG_Prototype.Code
             }
 
             Player = Instantiate(_playerPrefab);
+            Player.GetComponent<PlayerMovement>().SetBound(_tilemap);
         }
     }
 }

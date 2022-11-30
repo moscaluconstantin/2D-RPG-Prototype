@@ -46,7 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lerpSpeed: 0.125
+  _camera: {fileID: 1664072677672968678}
   _playerLoader: {fileID: 0}
+  _tileMap: {fileID: 0}
 --- !u!1 &1664072677672968676
 GameObject:
   m_ObjectHideFlags: 0

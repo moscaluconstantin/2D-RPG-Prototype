@@ -86,7 +86,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movementSpeed: 4
+  _boundsOffset: {x: 0.3, y: 0.5}
   _rigidBody: {fileID: 8062559144322480152}
+  _collider: {fileID: 8062559144322480153}
   _animator: {fileID: 1210429630745946690}
 --- !u!114 &1210429630745946690
 MonoBehaviour:

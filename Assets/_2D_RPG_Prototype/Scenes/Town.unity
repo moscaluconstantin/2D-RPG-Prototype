@@ -5937,21 +5937,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
-      propertyPath: _key
-      value: Countryside-Town
-      objectReference: {fileID: 0}
-    - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
       propertyPath: _playerLoader
       value: 
       objectReference: {fileID: 4776837236291176931}
-    - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
-      propertyPath: _gizmosBoxSize.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
-      propertyPath: _gizmosBoxSize.y
-      value: 3.3
-      objectReference: {fileID: 0}
     - target: {fileID: 1155325812232346585, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
       propertyPath: _targetSceneName
       value: Countryside
@@ -6007,14 +5995,6 @@ PrefabInstance:
     - target: {fileID: 7870170137459119620, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.61
-      objectReference: {fileID: 0}
-    - target: {fileID: 9191530200162350314, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
-      propertyPath: m_Size.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 9191530200162350314, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
-      propertyPath: m_Size.y
-      value: 3.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}

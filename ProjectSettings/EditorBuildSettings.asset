@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_2D_RPG_Prototype/Scenes/BootstrapScene.unity
+    path: Assets/_2D_RPG_Prototype/Scenes/boot.unity
     guid: 39edd9aca9800ea4684392b865840c9b
   - enabled: 1
     path: Assets/_2D_RPG_Prototype/Scenes/SampleScene.unity

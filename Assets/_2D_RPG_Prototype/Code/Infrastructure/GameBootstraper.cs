@@ -15,7 +15,6 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             InitServices();
 
             _sceneLoader.LoadScene("SampleScene");
-            //SceneManager.LoadScene("SampleScene", LoadSceneMode.Additive);
         }
 
         private void InitServices()
@@ -26,6 +25,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             ServiceProvider.CoroutineRunner = _coroutineRunner;
             ServiceProvider.ScreenFader = _screenFader;
             ServiceProvider.SceneLoader = _sceneLoader;
+            ServiceProvider.SaveLoadService = new SaveLoadService();
         }
     }
 }

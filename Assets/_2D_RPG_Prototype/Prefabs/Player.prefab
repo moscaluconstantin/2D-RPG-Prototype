@@ -82,12 +82,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8062559144322480157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99756d406e7b4984995256f262307b5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b91c194c56fd9b48b3a5d6467ddbe85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movementSpeed: 5
+  _movementSpeed: 4
   _rigidBody: {fileID: 8062559144322480152}
   _animator: {fileID: 1210429630745946690}
+  input: {x: 0, y: 0}
 --- !u!114 &1210429630745946690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8062559144322480157}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92365892c6aa0de45a4b514cbb7d08a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 87ec685ba9a39e341afe77f24e1009d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 185620876}

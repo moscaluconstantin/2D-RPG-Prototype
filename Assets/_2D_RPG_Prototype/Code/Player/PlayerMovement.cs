@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private const float MIN_INPUT = .1f;
 
-    [SerializeField] private Vector2 input;
+    private Vector2 input;
 
     private void Update()
     {

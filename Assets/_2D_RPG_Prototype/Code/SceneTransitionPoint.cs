@@ -41,6 +41,7 @@ namespace Assets._2D_RPG_Prototype.Code
                 return;
 
             _playerLoader.Player.transform.position = _entryPoint.position;
+            ServiceProvider.CameraController.Follow(_playerLoader.Player.transform);
         }
 
         private void OnDrawGizmos()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets._2D_RPG_Prototype.Code
@@ -15,24 +16,25 @@ namespace Assets._2D_RPG_Prototype.Code
         private Vector3 _boundsMin;
         private Vector3 _boundsMax;
 
+        private void Awake() =>
+            ServiceProvider.CameraController = this;
+
         private void Start()
         {
-            _target = _playerLoader.Player.transform;
-
             SetBounds(_playerLoader.Tilemap);
-
-            transform.position = _target.position;
+            Follow(_playerLoader.Player.transform);
         }
 
         private void FixedUpdate()
         {
             var lerpedPosition = Vector3.Lerp(transform.position, _target.position, _lerpSpeed);
-            transform.position = new()
-            {
-                x = Mathf.Clamp(lerpedPosition.x, _boundsMin.x, _boundsMax.x),
-                y = Mathf.Clamp(lerpedPosition.y, _boundsMin.y, _boundsMax.y),
-                z = lerpedPosition.z
-            };
+            transform.position = Clamp(lerpedPosition);
+        }
+
+        public void Follow(Transform target)
+        {
+            _target = target;
+            transform.position = Clamp(_target.position);
         }
 
         private void SetBounds(Tilemap tilemap)
@@ -47,5 +49,12 @@ namespace Assets._2D_RPG_Prototype.Code
             _boundsMin = tilemap.localBounds.min + offset;
             _boundsMax = tilemap.localBounds.max - offset;
         }
+
+        private Vector3 Clamp(Vector3 position) => new()
+        {
+            x = Mathf.Clamp(position.x, _boundsMin.x, _boundsMax.x),
+            y = Mathf.Clamp(position.y, _boundsMin.y, _boundsMax.y),
+            z = position.z
+        };
     }
 }

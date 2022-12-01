@@ -1,4 +1,6 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using UnityEditor;
 using UnityEngine;
 
@@ -19,8 +21,16 @@ namespace Assets._2D_RPG_Prototype.Code
         [SerializeField] private Color _gizmosEntryPointColor;
         [SerializeField] private float _gizmosEntryPointRadius;
 
+        private ISaveLoadService _saveLoad;
+        private ISceneLoader _sceneLoader;
+        private ICameraController _cameraController;
+
         private void Start()
         {
+            _saveLoad = ServiceProvider.GetService<ISaveLoadService>();
+            _sceneLoader = ServiceProvider.GetService<ISceneLoader>();
+            _cameraController = ServiceProvider.GetService<ICameraController>();
+
             TryPlacePlayer();
         }
 
@@ -30,18 +40,18 @@ namespace Assets._2D_RPG_Prototype.Code
             {
                 playerMovement.SetMovementState(false);
 
-                ServiceProvider.SaveLoadService.PlayerData.TransitionPointKey = _key;
-                ServiceProvider.SceneLoader.LoadScene(_targetSceneName);
+                _saveLoad.PlayerData.TransitionPointKey = _key;
+                _sceneLoader.LoadScene(_targetSceneName);
             }
         }
 
         private void TryPlacePlayer()
         {
-            if (ServiceProvider.SaveLoadService.PlayerData.TransitionPointKey != _key)
+            if (_saveLoad.PlayerData.TransitionPointKey != _key)
                 return;
 
             _playerLoader.Player.transform.position = _entryPoint.position;
-            ServiceProvider.CameraController.Follow(_playerLoader.Player.transform);
+            _cameraController.Follow(_playerLoader.Player.transform);
         }
 
         private void OnDrawGizmos()

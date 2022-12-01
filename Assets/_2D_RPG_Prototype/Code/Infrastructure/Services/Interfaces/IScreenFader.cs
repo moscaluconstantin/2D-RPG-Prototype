@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces
 {
-    public interface IScreenFader
+    public interface IScreenFader : IService
     {
         void FadeInstant(FadeType fadeType);
         Coroutine Fade(FadeType fadeType);

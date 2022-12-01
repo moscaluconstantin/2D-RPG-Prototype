@@ -1,10 +1,11 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 namespace Assets._2D_RPG_Prototype.Code
 {
-    public class CameraController : MonoBehaviour
+    public class CameraController : MonoBehaviour, ICameraController
     {
         [SerializeField] private float _lerpSpeed = .125f;
 
@@ -17,7 +18,7 @@ namespace Assets._2D_RPG_Prototype.Code
         private Vector3 _boundsMax;
 
         private void Awake() =>
-            ServiceProvider.CameraController = this;
+            ServiceProvider.AddService<ICameraController>(this);
 
         private void Start()
         {

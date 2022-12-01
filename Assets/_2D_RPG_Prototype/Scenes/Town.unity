@@ -5998,6 +5998,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 72ab866f0cbf7724182110dc9b493bd0, type: 3}
+--- !u!1001 &651916227
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 9.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 141379238379064999, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8586451328682297903, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: m_Name
+      value: NPC Lorelle Starling
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
 --- !u!1001 &786831596
 PrefabInstance:
   m_ObjectHideFlags: 0

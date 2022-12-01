@@ -1,4 +1,5 @@
-﻿using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
+﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI.Dialog;
 using System.Collections;
 using System.Text;
@@ -23,22 +24,31 @@ namespace Assets._2D_RPG_Prototype.Code.UI
         private Coroutine _coroutine;
         private Dialogue _dialogue;
         private int _lineIndex;
+        private bool _started;
 
         private void Awake() =>
             _stringBuilder = new StringBuilder();
 
-        private void Start() =>
+        private void Start()
+        {
+            _coroutineRunner = ServiceProvider.GetService<ICoroutineRunner>();
             Hide();
+        }
 
         private void Update()
         {
-            if (!Input.GetButtonUp("Fire"))
+
+            if (!_started)
+                return;
+
+            if (!Input.GetButtonUp("Fire1"))
                 return;
 
             if (_coroutine != null)
             {
                 _coroutineRunner.StopCoroutine(_coroutine);
                 _dialogueText.SetText(_currentLine.Text);
+                _coroutine = null;
                 return;
             }
 
@@ -59,6 +69,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
 
             this._dialogue = dialogue;
 
+            _started = true;
             _container.SetActive(true);
             ShowCurrentLine();
         }
@@ -66,6 +77,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
         public void Hide()
         {
             _container.SetActive(false);
+            _started = false;
 
             if (_coroutine != null)
                 _coroutineRunner.StopCoroutine(_coroutine);
@@ -77,6 +89,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             _dialogueText.text = "";
 
             _stringBuilder.Clear();
+            _coroutine= null;
             _lineIndex = 0;
         }
 
@@ -87,7 +100,10 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             if (!string.IsNullOrEmpty(owner))
                 _nameText.SetText(owner);
 
-            var delay = new WaitForSeconds((float)_currentLine.Text.Length / _animationSpeed);
+            var totalDuration = (float)_currentLine.Text.Length / _animationSpeed;
+            var delay = new WaitForSeconds(totalDuration / (_currentLine.Text.Length - 1));
+
+            _stringBuilder.Clear();
 
             for (int i = 0; i < _currentLine.Text.Length; i++)
             {
@@ -96,6 +112,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI
 
                 yield return delay;
             }
+
+            _coroutine = null;
         }
 
         private void ShowCurrentLine() =>

@@ -8,7 +8,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
     {
         [SerializeField] DialogueManager _dialogManager;
 
-        public DialogueManager DialogManager => _dialogManager;
+        public DialogueManager DialogueManager => _dialogManager;
 
         private void Awake() =>
             ServiceProvider.AddService<IUIService>(this);

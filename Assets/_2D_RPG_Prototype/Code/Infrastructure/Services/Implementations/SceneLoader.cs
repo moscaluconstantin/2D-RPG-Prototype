@@ -20,14 +20,14 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             _screenFader = screenFader;
         }
 
-        public void LoadScene(string sceneName)
+        public Coroutine LoadScene(string sceneName)
         {
             if (_isLoading)
-                return;
+                return null;
 
             _isLoading = true;
 
-            _coroutineRunner.StartCoroutine(LoadSceneCoroutine(sceneName));
+            return _coroutineRunner.StartCoroutine(LoadSceneCoroutine(sceneName));
         }
 
         private IEnumerator LoadSceneCoroutine(string sceneName)

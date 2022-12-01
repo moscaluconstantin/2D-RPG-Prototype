@@ -1,6 +1,8 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets._2D_RPG_Prototype.Code.Infrastructure
 {
@@ -14,7 +16,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
         {
             InitServices();
 
-            _sceneLoader.LoadScene("Countryside");
+            _coroutineRunner.StartCoroutine(Startup());
         }
 
         private void InitServices()
@@ -26,6 +28,12 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             ServiceProvider.AddService<IScreenFader>(_screenFader);
             ServiceProvider.AddService<ISceneLoader>(_sceneLoader);
             ServiceProvider.AddService<ISaveLoadService>(new SaveLoadService());
+        }
+
+        private IEnumerator Startup()
+        {
+            yield return SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
+            yield return _sceneLoader.LoadScene("Countryside");
         }
     }
 }

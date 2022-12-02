@@ -1,4 +1,5 @@
-﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
+﻿using Assets._2D_RPG_Prototype.Code.Constants;
+using Assets._2D_RPG_Prototype.Code.Infrastructure;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI.Dialog;
 using System;
@@ -44,7 +45,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             if (!_started)
                 return;
 
-            if (!Input.GetButtonUp("Fire1"))
+            if (!Input.GetButtonUp(InputConstants.FIRE_1))
                 return;
 
             if (_coroutine != null)

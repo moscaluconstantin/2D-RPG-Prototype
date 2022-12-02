@@ -1,4 +1,5 @@
 using Assets._2D_RPG_Prototype.Code;
+using Assets._2D_RPG_Prototype.Code.Constants;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -23,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
         if (!_canMove)
             return;
 
-        input = new(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        input = new(Input.GetAxisRaw(InputConstants.AXES_HORIZONTAL), Input.GetAxisRaw(InputConstants.AXES_VERTICAL));
 
         UpdateAnimatorValues();
     }

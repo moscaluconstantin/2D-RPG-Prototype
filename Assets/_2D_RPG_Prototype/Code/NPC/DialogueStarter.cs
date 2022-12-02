@@ -1,4 +1,5 @@
-﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
+﻿using Assets._2D_RPG_Prototype.Code.Constants;
+using Assets._2D_RPG_Prototype.Code.Infrastructure;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI;
 using Assets._2D_RPG_Prototype.Code.UI.Dialog;
@@ -26,7 +27,7 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
 
         private void Update()
         {
-            if (!CanStart || !Input.GetButtonUp("Fire1"))
+            if (!CanStart || !Input.GetButtonUp(InputConstants.FIRE_1))
                 return;
 
             _started = true;

@@ -1,5 +1,6 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
+using Assets._2D_RPG_Prototype.Code.UI;
 using Assets._2D_RPG_Prototype.Code.UI.Dialog;
 using UnityEngine;
 
@@ -8,23 +9,28 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
     public class DialogueStarter : MonoBehaviour
     {
         [SerializeField] private Dialogue _dialogue;
+        [SerializeField] private float _cooldown = 2;
 
+        public bool CanStart => !_started &&
+            _playermovement != null &&
+            Time.time - _completionTime >= _cooldown;
+
+        private DialogueManager _dialogueManager;
         private PlayerMovement _playermovement;
         private bool _started = false;
+        private float _completionTime = 0;
+
+        private void Start() =>
+            _dialogueManager = ServiceProvider.GetService<IUIService>().DialogueManager;
 
         private void Update()
         {
-            if(_started) 
+            if (!CanStart || !Input.GetButtonUp("Fire1"))
                 return;
 
-            if (_playermovement == null)
-                return;
-
-            if (Input.GetButtonUp("Fire1"))
-            {
-                _started = true;
-                ServiceProvider.GetService<IUIService>().DialogueManager.Show(_dialogue);
-            }
+            _started = true;
+            _playermovement.SetMovementState(false);
+            _dialogueManager.Show(_dialogue, OnDialogueCompleted);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -35,8 +41,15 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            _playermovement = null;
+            if (collision.transform.TryGetComponent(out PlayerMovement _))
+                _playermovement = null;
+        }
+
+        private void OnDialogueCompleted()
+        {
+            _completionTime = Time.time;
             _started = false;
+            _playermovement.SetMovementState(true);
         }
     }
 }

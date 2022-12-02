@@ -1,6 +1,7 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI.Dialog;
+using System;
 using System.Collections;
 using System.Text;
 using TMPro;
@@ -23,6 +24,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
         private StringBuilder _stringBuilder;
         private Coroutine _coroutine;
         private Dialogue _dialogue;
+        private Action _onComplete;
         private int _lineIndex;
         private bool _started;
 
@@ -56,6 +58,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
 
             if (_lineIndex >= _dialogue.Lines.Length)
             {
+                _onComplete?.Invoke();
                 Hide();
                 return;
             }
@@ -63,11 +66,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             ShowCurrentLine();
         }
 
-        public void Show(Dialogue dialogue)
+        public void Show(Dialogue dialogue, Action onComplete = null)
         {
             Clear();
 
-            this._dialogue = dialogue;
+            _dialogue = dialogue;
+            _onComplete = onComplete;
 
             _started = true;
             _container.SetActive(true);
@@ -78,6 +82,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
         {
             _container.SetActive(false);
             _started = false;
+            _onComplete = null;
 
             if (_coroutine != null)
                 _coroutineRunner.StopCoroutine(_coroutine);
@@ -89,7 +94,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             _dialogueText.text = "";
 
             _stringBuilder.Clear();
-            _coroutine= null;
+            _coroutine = null;
             _lineIndex = 0;
         }
 

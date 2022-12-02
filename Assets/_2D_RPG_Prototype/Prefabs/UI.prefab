@@ -623,6 +623,7 @@ MonoBehaviour:
   _dialogueText: {fileID: 630243247073790510}
   _nameText: {fileID: 6369523503094517641}
   _container: {fileID: 883014526656728365}
+  _nameBox: {fileID: 7532845370311492815}
 --- !u!1 &7532845370311492815
 GameObject:
   m_ObjectHideFlags: 0

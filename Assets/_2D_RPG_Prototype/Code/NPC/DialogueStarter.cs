@@ -10,6 +10,7 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
     {
         [SerializeField] private Dialogue _dialogue;
         [SerializeField] private float _cooldown = 2;
+        [SerializeField] private bool _hasName = true;
 
         public bool CanStart => !_started &&
             _playermovement != null &&
@@ -30,7 +31,7 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
 
             _started = true;
             _playermovement.SetMovementState(false);
-            _dialogueManager.Show(_dialogue, OnDialogueCompleted);
+            _dialogueManager.Show(_dialogue, _hasName, OnDialogueCompleted);
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

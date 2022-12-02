@@ -17,6 +17,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI
         [SerializeField] private TextMeshProUGUI _dialogueText;
         [SerializeField] private TextMeshProUGUI _nameText;
         [SerializeField] private GameObject _container;
+        [SerializeField] private GameObject _nameBox;
 
         private DialogueLine _currentLine => _dialogue.Lines[_lineIndex];
 
@@ -66,10 +67,11 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             ShowCurrentLine();
         }
 
-        public void Show(Dialogue dialogue, Action onComplete = null)
+        public void Show(Dialogue dialogue, bool showName, Action onComplete = null)
         {
             Clear();
 
+            _nameBox.SetActive(showName);
             _dialogue = dialogue;
             _onComplete = onComplete;
 

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c530050a5239cd04d894d236dcd27c45, type: 3}
+  m_Name: Groot Stats
+  m_EditorClassIdentifier: 
+  _name: Groot
+  _image: {fileID: 0}
+  _experienceProgression: {fileID: 11400000, guid: 5bcfb3d7041201446a2b14155f9eb46b, type: 2}
+  _healtProgression: {fileID: 11400000, guid: ee39d3477d987fe4ab476c49eda55e8c, type: 2}
+  _manaProgression: {fileID: 11400000, guid: 79894246a783d274c911dfbd285c9e48, type: 2}
+  _strengthProgression: {fileID: 11400000, guid: 64ec311a39d3322489884a49a8005737, type: 2}

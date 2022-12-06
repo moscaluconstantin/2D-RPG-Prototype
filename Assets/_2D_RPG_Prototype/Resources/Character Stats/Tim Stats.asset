@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c530050a5239cd04d894d236dcd27c45, type: 3}
+  m_Name: Tim Stats
+  m_EditorClassIdentifier: 
+  _name: Tim
+  _image: {fileID: 0}
+  _experienceProgression: {fileID: 11400000, guid: a05e24c7262688d458556c8feb959a33, type: 2}
+  _healtProgression: {fileID: 11400000, guid: 84b51bda220b8c94fae3de0b299e1396, type: 2}
+  _manaProgression: {fileID: 11400000, guid: cc04054c1d966ba42aa96c5fb70fcc7c, type: 2}
+  _strengthProgression: {fileID: 11400000, guid: 3d06de5e0a9a0934f92d428d971d26fc, type: 2}

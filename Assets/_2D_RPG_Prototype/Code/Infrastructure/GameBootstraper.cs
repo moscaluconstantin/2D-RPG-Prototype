@@ -17,6 +17,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             InitServices();
 
             _coroutineRunner.StartCoroutine(Startup());
+
+            print(ServiceProvider.GetService<IStatsManager>().Stats.Length);
         }
 
         private void InitServices()
@@ -28,6 +30,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             ServiceProvider.AddService<IScreenFader>(_screenFader);
             ServiceProvider.AddService<ISceneLoader>(_sceneLoader);
             ServiceProvider.AddService<ISaveLoadService>(new SaveLoadService());
+            ServiceProvider.AddService<IStatsManager>(new StatsManager());
         }
 
         private IEnumerator Startup()

@@ -37,8 +37,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Stats
             _levelText.SetText(_stats.Level.ToString());
             _healthValueText.SetText($"{_stats.Health}/{_stats.MaxHealth}");
             _manaValueText.SetText($"{_stats.Mana}/{_stats.MaxMana}");
-            _experienceValueText.SetText($"{_stats.Experience}/{_stats.ExperienceToNextLevel}");
-            _experienceSlider.value = (float)_stats.Experience / _stats.ExperienceToNextLevel;
+            _experienceValueText.SetText($"{_stats.Experience}/{_stats.MaxExperience}");
+            _experienceSlider.value = (float)_stats.Experience / _stats.MaxExperience;
         }
     }
 }

@@ -13,16 +13,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Stats
 
         private List<CharacterStatsView> _views;
 
-        private void OnEnable()
-        {
-            if (_views == null || _views.Count <= 0)
-                return;
-
-            foreach (var view in _views)
-                view.Refresh();
-        }
-
-        private void Start()
+        private void Awake()
         {
             _views = new List<CharacterStatsView>();
 
@@ -37,8 +28,15 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Stats
                 view.Initialize(stat);
                 _views.Add(view);
             }
+        }
 
-            _container.gameObject.SetActive(false);
+        private void OnEnable()
+        {
+            if (_views == null || _views.Count <= 0)
+                return;
+
+            foreach (var view in _views)
+                view.Refresh();
         }
     }
 }

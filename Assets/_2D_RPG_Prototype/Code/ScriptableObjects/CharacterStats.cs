@@ -22,7 +22,7 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
         public int Experience => _experience;
         public int Health => _health;
         public int Mana => _mana;
-        public int ExperienceToNextLevel => Mathf.FloorToInt(_experienceProgression.Evaluate(_level));
+        public int MaxExperience => Mathf.FloorToInt(_experienceProgression.Evaluate(_level));
         public int MaxHealth => Mathf.FloorToInt(_healtProgression.Evaluate(_level));
         public int MaxMana => Mathf.FloorToInt(_manaProgression.Evaluate(_level));
 
@@ -41,7 +41,7 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
         {
             _experience += experienceToAdd;
 
-            if (_experience < ExperienceToNextLevel)
+            if (_experience < MaxExperience)
                 return;
 
             LevelUp();
@@ -49,7 +49,7 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
 
         private void LevelUp()
         {
-            _experience -= ExperienceToNextLevel;
+            _experience -= MaxExperience;
             _level++;
 
             _health = MaxHealth;

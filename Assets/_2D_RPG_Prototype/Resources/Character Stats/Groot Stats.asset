@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Groot Stats
   m_EditorClassIdentifier: 
   _name: Groot
-  _image: {fileID: 0}
+  _image: {fileID: 21300000, guid: e0ddba6d3fcf21f49949fcc95c849aac, type: 3}
   _experienceProgression: {fileID: 11400000, guid: 5bcfb3d7041201446a2b14155f9eb46b, type: 2}
   _healtProgression: {fileID: 11400000, guid: ee39d3477d987fe4ab476c49eda55e8c, type: 2}
   _manaProgression: {fileID: 11400000, guid: 79894246a783d274c911dfbd285c9e48, type: 2}

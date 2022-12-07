@@ -17,8 +17,6 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             InitServices();
 
             _coroutineRunner.StartCoroutine(Startup());
-
-            print(ServiceProvider.GetService<IStatsManager>().Stats.Length);
         }
 
         private void InitServices()

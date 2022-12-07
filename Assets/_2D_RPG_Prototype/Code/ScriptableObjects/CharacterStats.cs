@@ -16,6 +16,12 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
         [SerializeField] private BaseProgression _manaProgression;
         [SerializeField] private BaseProgression _strengthProgression;
 
+        public string Name => _name;
+        public Sprite Image => _image;
+        public int Level => _level;
+        public int Experience => _experience;
+        public int Health => _health;
+        public int Mana => _mana;
         public int ExperienceToNextLevel => Mathf.FloorToInt(_experienceProgression.Evaluate(_level));
         public int MaxHealth => Mathf.FloorToInt(_healtProgression.Evaluate(_level));
         public int MaxMana => Mathf.FloorToInt(_manaProgression.Evaluate(_level));

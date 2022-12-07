@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tim Stats
   m_EditorClassIdentifier: 
   _name: Tim
-  _image: {fileID: 0}
+  _image: {fileID: -2052562321, guid: 2e273d4e751fe644abcee2fa1c87469d, type: 3}
   _experienceProgression: {fileID: 11400000, guid: a05e24c7262688d458556c8feb959a33, type: 2}
   _healtProgression: {fileID: 11400000, guid: 84b51bda220b8c94fae3de0b299e1396, type: 2}
   _manaProgression: {fileID: 11400000, guid: cc04054c1d966ba42aa96c5fb70fcc7c, type: 2}

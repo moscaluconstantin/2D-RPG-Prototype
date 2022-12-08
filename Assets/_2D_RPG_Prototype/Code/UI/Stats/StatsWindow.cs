@@ -18,7 +18,6 @@ public class StatsWindow : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _manaValueText;
     [SerializeField] private TextMeshProUGUI _experienceValueText;
 
-
     [Header("Other components")]
     [SerializeField] private Transform _buttonsContainer;
     [SerializeField] private StatsButton _statsButtonPrefab;

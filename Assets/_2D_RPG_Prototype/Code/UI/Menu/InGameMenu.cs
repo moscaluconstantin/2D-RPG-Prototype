@@ -9,25 +9,25 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
     {
         [SerializeField] private MenuContentType _defaultContentType;
 
+        [Header("Contents")]
+        [SerializeField] private GameObject _charactersWindow;
+        [SerializeField] private GameObject _statsWindow;
+        [SerializeField] private GameObject _inventoryWindow;
+
         [Header("Compinents")]
         [SerializeField] private GameObject _container;
         [SerializeField] private Transform _contentButtonsContainer;
 
         private MenuContentButton[] _contentButtons;
         private Dictionary<MenuContentType, MenuContentButton> _buttonsDictionary;
+        private Dictionary<MenuContentType, GameObject> _windowsDictionary;
         private MenuContentType _selectedContentType;
         private bool _isActive;
 
         private void Start()
         {
-            _contentButtons = _contentButtonsContainer.GetComponentsInChildren<MenuContentButton>();
-            _buttonsDictionary = _contentButtons.ToDictionary(x => x.ContentType, x => x);
-
-            foreach (var button in _contentButtons)
-            {
-                button.OnClicked += OpenContent;
-                button.Deselect();
-            }
+            InitContentButtons();
+            InitContentWindows();
 
             OpenContent(_defaultContentType);
             Close();
@@ -63,6 +63,31 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
             print("Quit");
         }
 
+        private void InitContentButtons()
+        {
+            _contentButtons = _contentButtonsContainer.GetComponentsInChildren<MenuContentButton>();
+            _buttonsDictionary = _contentButtons.ToDictionary(x => x.ContentType, x => x);
+
+            foreach (var button in _contentButtons)
+            {
+                button.OnClicked += OpenContent;
+                button.Deselect();
+            }
+        }
+
+        private void InitContentWindows()
+        {
+            _windowsDictionary = new()
+            {
+                [MenuContentType.Characters] = _charactersWindow,
+                [MenuContentType.Stats] = _statsWindow,
+                [MenuContentType.Inventory] = _inventoryWindow,
+            };
+
+            foreach (var item in _windowsDictionary)
+                item.Value.SetActive(false);
+        }
+
         private void Toggle() =>
             SetMenuState(!_isActive);
 
@@ -79,8 +104,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
 
             if (_buttonsDictionary.TryGetValue(_selectedContentType, out var selectedButton))
                 selectedButton.Deselect();
-
             _buttonsDictionary[contentType].Select();
+
+            if (_windowsDictionary.TryGetValue(_selectedContentType, out var selectedWindow))
+                selectedWindow.SetActive(false);
+            _windowsDictionary[contentType].SetActive(true);
+
             _selectedContentType = contentType;
         }
     }

@@ -6,18 +6,18 @@ using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.UI.Stats
 {
-    public class CharacterStatsWindow : MonoBehaviour
+    public class CharactersWindow : MonoBehaviour
     {
-        [SerializeField] CharacterStatsView _viewPrefab;
+        [SerializeField] CharacterView _viewPrefab;
         [SerializeField] Transform _container;
 
-        private List<CharacterStatsView> _views;
+        private List<CharacterView> _views;
 
         private void Awake()
         {
-            _views = new List<CharacterStatsView>();
+            _views = new List<CharacterView>();
 
-            var existingViews = _container.GetComponentsInChildren<CharacterStatsView>(true);
+            var existingViews = _container.GetComponentsInChildren<CharacterView>(true);
             foreach (var existingView in existingViews)
                 Destroy(existingView.gameObject);
 

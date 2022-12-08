@@ -1,12 +1,11 @@
 ﻿using Assets._2D_RPG_Prototype.Code.ScriptableObjects;
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets._2D_RPG_Prototype.Code.UI.Stats
 {
-    public class CharacterStatsView : MonoBehaviour
+    public class CharacterView : MonoBehaviour
     {
         [SerializeField] private Image _avatarImage;
         [SerializeField] private TextMeshProUGUI _nameText;

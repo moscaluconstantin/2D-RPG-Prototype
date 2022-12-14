@@ -1,11 +1,10 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Constants;
-using Assets._2D_RPG_Prototype.Code.Data;
 using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
 {
     [CreateAssetMenu(fileName = ResourceFileNames.INVENTORY_ITEM, menuName = ResourcesMenu.INVENTORY_ITEMS + "WithTimerInventoryItem", order = 1)]
-    public class WithTimerInventoryItem : WithStatsInventoryItem
+    public class WithTimerInventoryItem : WithStatsInventoryItem, ICharacterStatsApplicable
     {
         [SerializeField] private float _duration;
 
@@ -17,6 +16,11 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
             description.Replace("_d", _duration.ToString());
 
             return description;
+        }
+
+        public void Apply(CharacterStats characterStats)
+        {
+            Debug.Log($"Apply {Name} to {characterStats.Name}");
         }
     }
 }

@@ -4,7 +4,12 @@ using UnityEngine;
 namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
 {
     [CreateAssetMenu(fileName = ResourceFileNames.INVENTORY_ITEM, menuName = ResourcesMenu.INVENTORY_ITEMS + "ConsumableInventoryItem", order = 1)]
-    public class ConsumableInventoryItem : WithStatsInventoryItem
+    public class ConsumableInventoryItem : WithStatsInventoryItem, ICharacterStatsApplicable
     {
+        public void Apply(CharacterStats characterStats)
+        {
+            foreach (var stat in Stats)
+                characterStats.AddToCurrentValue(stat);
+        }
     }
 }

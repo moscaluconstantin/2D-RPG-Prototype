@@ -1,5 +1,7 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Constants;
+using Assets._2D_RPG_Prototype.Code.Data;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.Progressions;
+using System;
 using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
@@ -54,6 +56,11 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
 
             _health = MaxHealth;
             _mana = MaxMana;
+        }
+
+        internal void AddToCurrentValue(StatValue stat)
+        {
+            Debug.Log($"Add {stat.Value} to {stat.Type.ToString()}");
         }
     }
 }

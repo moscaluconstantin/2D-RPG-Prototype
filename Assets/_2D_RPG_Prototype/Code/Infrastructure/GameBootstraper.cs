@@ -11,6 +11,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
         [SerializeField] private CoroutineRunner _coroutineRunner;
         [SerializeField] private ScreenFader _screenFader;
         [SerializeField] private SceneLoader _sceneLoader;
+        [SerializeField] private InventoryService _inventory;
 
         private void Start()
         {
@@ -27,6 +28,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             ServiceProvider.AddService<ICoroutineRunner>(_coroutineRunner);
             ServiceProvider.AddService<IScreenFader>(_screenFader);
             ServiceProvider.AddService<ISceneLoader>(_sceneLoader);
+            ServiceProvider.AddService<IInventoryService>(_inventory);
             ServiceProvider.AddService<ISaveLoadService>(new SaveLoadService());
             ServiceProvider.AddService<IStatsManager>(new StatsManager());
         }

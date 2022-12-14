@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91caf8f01779f554f8596c7e71ccbffa, type: 3}
   m_Name: 211 Mana Ring
   m_EditorClassIdentifier: 
-  _id: 210
-  _name: Health Ring
-  _description: Increases max health by _v0 points
+  _id: 211
+  _name: Mana Ring
+  _description: Increases max mana by _v0 points
   _image: {fileID: -1034661285, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  _slotType: 3
+  _slotType: 6
   _stats:
-  - _type: 1
+  - _type: 2
     _value: 20

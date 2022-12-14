@@ -1,4 +1,5 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Data;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
         [SerializeField] private List<InventorySlot> _slots;
 
         public InventoryItem[] Items => _slots.Select(x => x.Item).ToArray();
+
+        public int Count() =>
+            _slots.Count;
 
         public int Count(InventoryItem item)
         {

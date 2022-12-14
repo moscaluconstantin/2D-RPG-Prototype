@@ -14,7 +14,9 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
 
         public int Id => _id;
         public string Name => _name;
-        public string Description => _description;
         public Sprite Image => _image;
+
+        public virtual string GetDescription() =>
+            _description.ToLower();
     }
 }

@@ -5,12 +5,18 @@ using UnityEngine;
 namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
 {
     [CreateAssetMenu(fileName = ResourceFileNames.INVENTORY_ITEM, menuName = ResourcesMenu.INVENTORY_ITEMS + "WithTimerInventoryItem", order = 1)]
-    public class WithTimerInventoryItem : InventoryItem
+    public class WithTimerInventoryItem : WithStatsInventoryItem
     {
         [SerializeField] private float _duration;
-        [SerializeField] private StatValue[] _stats;
 
         public float Duration => _duration;
-        public StatValue[] Stats => _stats;
+
+        public override string GetDescription()
+        {
+            string description = base.GetDescription();
+            description.Replace("_d", _duration.ToString());
+
+            return description;
+        }
     }
 }

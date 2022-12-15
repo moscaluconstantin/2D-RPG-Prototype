@@ -11,7 +11,12 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
         private CharacterStats[] _stats;
 
-        public StatsManager() => 
+        public StatsManager()
+        {
             _stats = Resources.LoadAll<CharacterStats>(ResourcePaths.STATS);
+
+            foreach (var stat in _stats)
+                stat.Initialize();
+        }
     }
 }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c530050a5239cd04d894d236dcd27c45, type: 3}
-  m_Name: Tim Stats
+  m_Name: 01 Tim Stats
   m_EditorClassIdentifier: 
   _name: Tim
   _image: {fileID: -2052562321, guid: 2e273d4e751fe644abcee2fa1c87469d, type: 3}

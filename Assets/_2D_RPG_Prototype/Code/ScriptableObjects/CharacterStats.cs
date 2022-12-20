@@ -30,8 +30,8 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
         public int Mana => _mana;
         public int Defence => _defence + _equipment.GetStatValue(StatType.Defence);
         public int MaxExperience => Mathf.FloorToInt(_experienceProgression.Evaluate(_level));
-        public int MaxHealth => Mathf.FloorToInt(_healtProgression.Evaluate(_level));
-        public int MaxMana => Mathf.FloorToInt(_manaProgression.Evaluate(_level));
+        public int MaxHealth => Mathf.FloorToInt(_healtProgression.Evaluate(_level)) + _equipment.GetStatValue(StatType.Health);
+        public int MaxMana => Mathf.FloorToInt(_manaProgression.Evaluate(_level)) + _equipment.GetStatValue(StatType.Mana);
         public int Damage => _damage + _equipment.GetStatValue(StatType.Damage);
         public Equipment Equipment => _equipment;
 

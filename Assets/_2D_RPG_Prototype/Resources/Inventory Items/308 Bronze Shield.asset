@@ -15,8 +15,8 @@ MonoBehaviour:
   _id: 308
   _name: Bronze Shield
   _description: Increases defence by _v0 points
-  _image: {fileID: -876624271, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  _slotType: 7
+  _image: {fileID: -442576569, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
   _stats:
   - _type: 5
     _value: 0
+  _slotType: 7

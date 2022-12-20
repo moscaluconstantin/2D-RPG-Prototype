@@ -24,7 +24,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             if (_currentFade != null)
                 _coroutineRunner.StopCoroutine(_currentFade);
 
-            return _coroutineRunner.StartCoroutine(FadeCoroutine(fadeType));
+            _currentFade = _coroutineRunner.StartCoroutine(FadeCoroutine(fadeType));
+            return _currentFade;
         }
 
         private IEnumerator FadeCoroutine(FadeType fadeType)
@@ -40,6 +41,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
                 yield return null;
             }
+
+            _currentFade = null;
         }
     }
 }

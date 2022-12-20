@@ -30,7 +30,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             ServiceProvider.AddService<ISceneLoader>(_sceneLoader);
             ServiceProvider.AddService<IInventoryService>(_inventory);
             ServiceProvider.AddService<ISaveLoadService>(new SaveLoadService());
-            ServiceProvider.AddService<IStatsManager>(new StatsManager());
+            ServiceProvider.AddService<IStatsManager>(new StatsManager(_inventory));
         }
 
         private IEnumerator Startup()

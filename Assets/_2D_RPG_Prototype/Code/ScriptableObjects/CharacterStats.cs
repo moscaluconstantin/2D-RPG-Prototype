@@ -1,6 +1,7 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Constants;
 using Assets._2D_RPG_Prototype.Code.Data;
 using Assets._2D_RPG_Prototype.Code.Enums;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.Player;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.Progressions;
 using UnityEngine;
@@ -41,9 +42,9 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
         private int _defence;
         private Equipment _equipment;
 
-        public void Initialize()
+        public void Initialize(IInventoryService inventory)
         {
-            _equipment = new Equipment();
+            _equipment = new Equipment(inventory);
 
             _health = MaxHealth;
             _mana = MaxMana;

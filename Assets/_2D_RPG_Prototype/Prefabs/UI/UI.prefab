@@ -200,7 +200,7 @@ MonoBehaviour:
   _choiceButtonsContainer: {fileID: 916558147456868500}
   _actionPanel: {fileID: 3427439524436800678}
   _choicePanel: {fileID: 8505807167399381202}
-  _buttonPrefab: {fileID: 1706895111146116649}
+  _buttonPrefab: {fileID: 677168284659523241, guid: c17003485c38a504a9923589cc41b76b, type: 3}
   _choiceButtonPrefab: {fileID: 522250802256936151, guid: 6c9cac7dd9dab6f45aaadf2f1d98c3dc, type: 3}
 --- !u!1 &803652985330412199
 GameObject:
@@ -2951,6 +2951,7 @@ MonoBehaviour:
   _manaValueText: {fileID: 5300474620041954046}
   _experienceValueText: {fileID: 3718891366820346084}
   _buttonsContainer: {fileID: 417123393168720750}
+  _slotsContainer: {fileID: 8939534700805493386}
   _statsButtonPrefab: {fileID: 7455712280480050603, guid: 2ddd50b6dd419c54db94982001ab472b, type: 3}
 --- !u!1 &8505807167399381202
 GameObject:
@@ -4372,6 +4373,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: -1711088687, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot (6)
@@ -4734,6 +4743,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: 593232968, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot
@@ -5036,17 +5053,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c17003485c38a504a9923589cc41b76b, type: 3}
---- !u!114 &1706895111146116649 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 677168284659523241, guid: c17003485c38a504a9923589cc41b76b, type: 3}
-  m_PrefabInstance: {fileID: 2221916156904441984}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa690a718488a204aba5fba4b0036e37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &5985647052460253343 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5603778380005402655, guid: c17003485c38a504a9923589cc41b76b, type: 3}
@@ -7020,6 +7026,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: 1611782256, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot (2)
@@ -7935,6 +7949,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: -1365392171, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot (4)
@@ -8143,6 +8165,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: -1564009303, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot (1)
@@ -9186,6 +9216,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: -18836751, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot (3)
@@ -9704,6 +9742,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: -278692297, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot (5)
@@ -9810,6 +9856,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8939534700805493386}
     m_Modifications:
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _slotType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134385271663677221, guid: d625e20122c8310459a17320fea889a6, type: 3}
+      propertyPath: _defaultIcon
+      value: 
+      objectReference: {fileID: -1636929669, guid: 1519211e929b1e041a3f8aef6f81fe4b, type: 3}
     - target: {fileID: 2170020325957682462, guid: d625e20122c8310459a17320fea889a6, type: 3}
       propertyPath: m_Name
       value: Equipment Slot (7)

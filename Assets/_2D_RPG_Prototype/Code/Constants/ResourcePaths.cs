@@ -3,5 +3,6 @@
     public static class ResourcePaths
     {
         public const string STATS = "Character Stats";
+        public const string INVENTORY_ITEMS = "Inventory Items";
     }
 }

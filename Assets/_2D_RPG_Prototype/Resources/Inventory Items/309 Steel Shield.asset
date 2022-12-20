@@ -18,5 +18,5 @@ MonoBehaviour:
   _image: {fileID: -177785731, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
   _stats:
   - _type: 5
-    _value: 0
+    _value: 100
   _slotType: 7

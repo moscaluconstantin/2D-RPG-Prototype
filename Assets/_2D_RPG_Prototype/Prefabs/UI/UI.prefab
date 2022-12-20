@@ -2945,7 +2945,7 @@ MonoBehaviour:
   _avatarImage: {fileID: 3539340035088942364}
   _nameText: {fileID: 2643488964501727704}
   _levelText: {fileID: 5851879481065257611}
-  _strengthValueText: {fileID: 476526233622650892}
+  _damageValueText: {fileID: 476526233622650892}
   _defenceValueText: {fileID: 7396886607800103527}
   _healthValueText: {fileID: 4227031690012198275}
   _manaValueText: {fileID: 5300474620041954046}
@@ -6905,7 +6905,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3540369156355801821, guid: 197e5d4263b633a4692bfce77d494591, type: 3}
       propertyPath: m_text
-      value: 'Strength:'
+      value: 'Damage:'
       objectReference: {fileID: 0}
     - target: {fileID: 4377765298397865834, guid: 197e5d4263b633a4692bfce77d494591, type: 3}
       propertyPath: m_text
@@ -6913,7 +6913,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5669541443878700980, guid: 197e5d4263b633a4692bfce77d494591, type: 3}
       propertyPath: m_Name
-      value: Strength
+      value: Damage
       objectReference: {fileID: 0}
     - target: {fileID: 5978857623132996967, guid: 197e5d4263b633a4692bfce77d494591, type: 3}
       propertyPath: m_Pivot.x

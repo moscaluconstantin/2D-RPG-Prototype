@@ -11,9 +11,7 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
 
         public EquipmentSlotType SlotType => _slotType;
 
-        public void Apply(CharacterStats characterStats)
-        {
-            Debug.Log($"Apply {Name} to {characterStats.Name}");
-        }
+        public void Apply(CharacterStats characterStats) =>
+            characterStats.Equipment.Add(this);
     }
 }

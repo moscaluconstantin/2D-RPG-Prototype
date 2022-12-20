@@ -1,7 +1,8 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Constants;
 using Assets._2D_RPG_Prototype.Code.Data;
+using Assets._2D_RPG_Prototype.Code.Enums;
+using Assets._2D_RPG_Prototype.Code.Player;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.Progressions;
-using System;
 using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
@@ -12,11 +13,13 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
         [SerializeField] private string _name;
         [SerializeField] private Sprite _image;
 
+        [Header("Constant Values")]
+        [SerializeField] private int _damage;
+
         [Header("Progressions")]
         [SerializeField] private BaseProgression _experienceProgression;
         [SerializeField] private BaseProgression _healtProgression;
         [SerializeField] private BaseProgression _manaProgression;
-        [SerializeField] private BaseProgression _strengthProgression;
 
         public string Name => _name;
         public Sprite Image => _image;
@@ -24,19 +27,27 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
         public int Experience => _experience;
         public int Health => _health;
         public int Mana => _mana;
+        public int Defence => _defence + _equipment.GetStatValue(StatType.Defence);
         public int MaxExperience => Mathf.FloorToInt(_experienceProgression.Evaluate(_level));
         public int MaxHealth => Mathf.FloorToInt(_healtProgression.Evaluate(_level));
         public int MaxMana => Mathf.FloorToInt(_manaProgression.Evaluate(_level));
+        public int Damage => _damage + _equipment.GetStatValue(StatType.Damage);
+        public Equipment Equipment => _equipment;
 
         private int _level = 1;
         private int _experience;
         private int _health;
         private int _mana;
+        private int _defence;
+        private Equipment _equipment;
 
         public void Initialize()
         {
+            _equipment = new Equipment();
+
             _health = MaxHealth;
             _mana = MaxMana;
+            _defence = 0;
         }
 
         public void AddExperience(int experienceToAdd)
@@ -49,6 +60,20 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
             LevelUp();
         }
 
+        public void AddToCurrentValue(StatValue stat)
+        {
+            switch (stat.Type)
+            {
+                case Enums.StatType.Health:
+                    _health = Mathf.FloorToInt(Mathf.Clamp(_health + stat.Value, 0, MaxHealth));
+                    break;
+                case Enums.StatType.Mana:
+                    _mana = Mathf.FloorToInt(Mathf.Clamp(_mana + stat.Value, 0, MaxMana));
+                    break;
+                default: break;
+            }
+        }
+
         private void LevelUp()
         {
             _experience -= MaxExperience;
@@ -56,11 +81,6 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects
 
             _health = MaxHealth;
             _mana = MaxMana;
-        }
-
-        internal void AddToCurrentValue(StatValue stat)
-        {
-            Debug.Log($"Add {stat.Value} to {stat.Type.ToString()}");
         }
     }
 }

@@ -12,7 +12,7 @@ public class StatsWindow : MonoBehaviour
     [SerializeField] private Image _avatarImage;
     [SerializeField] private TextMeshProUGUI _nameText;
     [SerializeField] private TextMeshProUGUI _levelText;
-    [SerializeField] private TextMeshProUGUI _strengthValueText;
+    [SerializeField] private TextMeshProUGUI _damageValueText;
     [SerializeField] private TextMeshProUGUI _defenceValueText;
     [SerializeField] private TextMeshProUGUI _healthValueText;
     [SerializeField] private TextMeshProUGUI _manaValueText;
@@ -65,7 +65,7 @@ public class StatsWindow : MonoBehaviour
         _nameText.SetText(_selectedStats.Name);
         _levelText.SetText(_selectedStats.Level.ToString());
         //_strengthValueText.SetText()
-        //_defenceValueText;
+        _defenceValueText.SetText(_selectedStats.Defence.ToString());
         _healthValueText.SetText($"{_selectedStats.Health}/{_selectedStats.MaxHealth}");
         _manaValueText.SetText($"{_selectedStats.Mana}/{_selectedStats.MaxMana}");
         _experienceValueText.SetText($"{_selectedStats.Experience}/{_selectedStats.MaxExperience}");

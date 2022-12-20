@@ -51,22 +51,24 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
             _inventory = ServiceProvider.GetService<IInventoryService>();
 
+            _inventory.OnItemsAmountChanged += RefreshButtons;
+            _inventory.OnItemsAmountChanged += CheckSelectedItem;
+            _inventory.OnItemsCountChanged += RefreshCounters;
             _useButton.onClick.AddListener(ShowChoicePanel);
             _discardButton.onClick.AddListener(DiscardSelectedItem);
 
             InitializeChoiceButtons();
-        }
-
-        private void OnEnable()
-        {
-            ResetPanels();
             RefreshButtons();
-
-            _itemInfoText.SetText("Pick an item");
         }
+
+        private void OnEnable() =>
+            ResetPanels();
 
         private void OnDestroy()
         {
+            _inventory.OnItemsAmountChanged -= RefreshButtons;
+            _inventory.OnItemsAmountChanged -= CheckSelectedItem;
+            _inventory.OnItemsCountChanged -= RefreshCounters;
             _useButton.onClick.RemoveListener(ShowChoicePanel);
             _discardButton.onClick.RemoveListener(DiscardSelectedItem);
 
@@ -134,15 +136,6 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
             applicable.Apply(character);
             _inventory.Remove(_selectedItem);
-
-            int remainingAmount = _inventory.Count(_selectedItem);
-            if (remainingAmount <= 0)
-            {
-                RemoveSelectedItemButton();
-                return;
-            }
-
-            SelectedButton.RefreshCounter(remainingAmount);
         }
 
         private void SelectItem(InventoryItem item)
@@ -164,6 +157,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
                 _buttons[i].Initialize(_items[i], _inventory.Count(_items[i]));
         }
 
+        private void RefreshCounters()
+        {
+            for (int i = 0; i < _items.Length; i++)
+                _buttons[i].RefreshCounter(_inventory.Count(_items[i]));
+        }
+
         private void ShowChoicePanel() =>
             _choicePanel.SetActive(true);
 
@@ -171,17 +170,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
         {
             int count = _inventory.Count(_selectedItem);
             _inventory.Remove(_selectedItem, count);
-
-            RemoveSelectedItemButton();
         }
 
-        private void RemoveSelectedItemButton()
+        private void CheckSelectedItem()
         {
-            var button = SelectedButton;
-            _buttons.Remove(button);
-            Destroy(button.gameObject);
-
-            ResetPanels();
+            if (_inventory.Count(_selectedItem) <= 0)
+                ResetPanels();
         }
 
         private void ResetPanels()
@@ -189,6 +183,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
             _selectedItem = null;
             _actionPanel.SetActive(false);
             _choicePanel.SetActive(false);
+            _itemInfoText.SetText("Pick an item");
         }
     }
 }

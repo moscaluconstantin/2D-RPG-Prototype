@@ -1,6 +1,7 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Data;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,6 +12,9 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
     {
         [SerializeField] private List<InventorySlot> _slots;
 
+        public event Action OnItemsAmountChanged;
+        public event Action OnItemsCountChanged;
+
         public InventoryItem[] Items => _slots.Select(x => x.Item).ToArray();
 
         public int Count() =>
@@ -18,7 +22,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
         public int Count(InventoryItem item)
         {
-            if (_slots.Any(x => x.Item.Id == item.Id))
+            if (item != null && _slots.Any(x => x.Item.Id == item.Id))
                 return _slots.First(x => x.Item.Id == item.Id).Count;
 
             return 0;
@@ -32,6 +36,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             if (_slots.Any(x => x.Item.Id == item.Id))
             {
                 _slots.First(x => x.Item.Id == item.Id).Count += amount;
+                OnItemsCountChanged?.Invoke();
                 return;
             }
 
@@ -40,6 +45,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
                 Item = item,
                 Count = amount
             });
+
+            OnItemsAmountChanged?.Invoke();
         }
 
         public void Remove(InventoryItem item, int amount = 1)
@@ -51,10 +58,12 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
                 if (slot.Count > amount)
                 {
                     slot.Count -= amount;
+                    OnItemsCountChanged?.Invoke();
                     return;
                 }
 
                 _slots.Remove(slot);
+                OnItemsAmountChanged?.Invoke();
             }
         }
     }

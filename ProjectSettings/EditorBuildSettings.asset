@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_2D_RPG_Prototype/Scenes/Town.unity
     guid: a7c7f2ded8343294fac28cff9e131d5d
+  - enabled: 1
+    path: Assets/_2D_RPG_Prototype/Scenes/Town Shop.unity
+    guid: 91fa18c71f7357440be4d1edd71ea919
   m_configObjects: {}

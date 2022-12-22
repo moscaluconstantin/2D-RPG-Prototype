@@ -3,7 +3,6 @@ using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,52 +12,41 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
     public class InventoryWindow : MonoBehaviour
     {
         [Header("Texts")]
-        [SerializeField] private TextMeshProUGUI _itemInfoText;
         [SerializeField] private TextMeshProUGUI _useButtonText;
 
         [Header("Buttons")]
         [SerializeField] private Button _useButton;
         [SerializeField] private Button _discardButton;
 
+        [Header("Prefabs")]
+        [SerializeField] private ChoiceButton _choiceButtonPrefab;
+
+        [Header("Components")]
+        [SerializeField] private InventoryItemsViewer _itemsViewer;
+
         [Header("Others")]
-        [SerializeField] private Transform _container;
         [SerializeField] private Transform _choiceButtonsContainer;
         [SerializeField] private GameObject _actionPanel;
         [SerializeField] private GameObject _choicePanel;
 
-        [Header("Prefabs")]
-        [SerializeField] private InventoryButton _buttonPrefab;
-        [SerializeField] private ChoiceButton _choiceButtonPrefab;
-
-        public InventoryButton SelectedButton => _buttons.FirstOrDefault(x => x.Contains(_selectedItem));
-
         private const string DEFAULT_BUTTON_LABLE = "Consume";
         private const string EQUIP_BUTTON_LABLE = "Equip";
 
-        private List<InventoryButton> _buttons;
         private List<ChoiceButton> _choiceButtons;
         private IInventoryService _inventory;
-        private InventoryItem[] _items;
         private InventoryItem _selectedItem;
 
         private void Awake()
         {
-            var existingButtons = _container.GetComponentsInChildren<InventoryButton>(true);
-            _buttons = new List<InventoryButton>(existingButtons);
-
-            foreach (var button in _buttons)
-                button.onItemSelect += OnItemSelected;
-
             _inventory = ServiceProvider.GetService<IInventoryService>();
+            _itemsViewer.Initialize(_inventory);
 
-            _inventory.OnItemsAmountChanged += RefreshButtons;
-            _inventory.OnItemsAmountChanged += CheckSelectedItem;
-            _inventory.OnItemsCountChanged += RefreshCounters;
             _useButton.onClick.AddListener(ShowChoicePanel);
             _discardButton.onClick.AddListener(DiscardSelectedItem);
+            _itemsViewer.itemSelected += OnItemSelected;
+            _itemsViewer.selectedItemRemoved += ResetPanels;
 
             InitializeChoiceButtons();
-            RefreshButtons();
         }
 
         private void OnEnable() =>
@@ -66,14 +54,10 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
         private void OnDestroy()
         {
-            _inventory.OnItemsAmountChanged -= RefreshButtons;
-            _inventory.OnItemsAmountChanged -= CheckSelectedItem;
-            _inventory.OnItemsCountChanged -= RefreshCounters;
             _useButton.onClick.RemoveListener(ShowChoicePanel);
             _discardButton.onClick.RemoveListener(DiscardSelectedItem);
-
-            foreach (var button in _buttons)
-                button.onItemSelect -= OnItemSelected;
+            _itemsViewer.itemSelected -= OnItemSelected;
+            _itemsViewer.selectedItemRemoved -= ResetPanels;
 
             foreach (var button in _choiceButtons)
                 button.onCharacterSelect -= OnCharacterSelected;
@@ -90,32 +74,6 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
                 button.Initialize(character);
                 button.onCharacterSelect += OnCharacterSelected;
                 _choiceButtons.Add(button);
-            }
-        }
-
-        private void RefreshButtonsAmount()
-        {
-            int diff = _inventory.Count() - _buttons.Count;
-
-            if (diff > 0)
-            {
-                for (int i = 0; i < diff; i++)
-                {
-                    var button = Instantiate(_buttonPrefab, _container);
-                    button.onItemSelect += OnItemSelected;
-                    _buttons.Add(button);
-                }
-            }
-            else if (diff < 0)
-            {
-                var toRemove = _buttons.Take(Mathf.Abs(diff)).ToList();
-
-                foreach (var button in toRemove)
-                {
-                    button.onItemSelect -= OnItemSelected;
-                    _buttons.Remove(button);
-                    Destroy(button.gameObject);
-                }
             }
         }
 
@@ -141,26 +99,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
         private void SelectItem(InventoryItem item)
         {
             _selectedItem = item;
-            _itemInfoText.SetText($"{item.Name} - {item.GetDescription()}");
             _useButtonText.SetText(item is EquipableInventoryItem ? EQUIP_BUTTON_LABLE : DEFAULT_BUTTON_LABLE);
             _useButton.interactable = item is ICharacterStatsApplicable;
-        }
-
-        private void RefreshButtons()
-        {
-            if (_buttons.Count != _inventory.Count())
-                RefreshButtonsAmount();
-
-            _items = _inventory.Items;
-
-            for (int i = 0; i < _items.Length; i++)
-                _buttons[i].Initialize(_items[i], _inventory.Count(_items[i]));
-        }
-
-        private void RefreshCounters()
-        {
-            for (int i = 0; i < _items.Length; i++)
-                _buttons[i].RefreshCounter(_inventory.Count(_items[i]));
         }
 
         private void ShowChoicePanel() =>
@@ -172,18 +112,11 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
             _inventory.Remove(_selectedItem, count);
         }
 
-        private void CheckSelectedItem()
-        {
-            if (_inventory.Count(_selectedItem) <= 0)
-                ResetPanels();
-        }
-
         private void ResetPanels()
         {
             _selectedItem = null;
             _actionPanel.SetActive(false);
             _choicePanel.SetActive(false);
-            _itemInfoText.SetText("Pick an item");
         }
     }
 }

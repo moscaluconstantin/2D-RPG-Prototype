@@ -1,5 +1,4 @@
-﻿using Assets._2D_RPG_Prototype.Code.Constants;
-using Assets._2D_RPG_Prototype.Code.Infrastructure;
+﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI;
 using Assets._2D_RPG_Prototype.Code.UI.Dialog;
@@ -7,18 +6,16 @@ using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.NPC
 {
-    public class DialogueStarter : MonoBehaviour
+    public class DialogueStarter : InteractableNPC
     {
         [SerializeField] private Dialogue _dialogue;
         [SerializeField] private float _cooldown = 2;
         [SerializeField] private bool _hasName = true;
 
-        public bool CanStart => !_started &&
-            _playermovement != null &&
+        public bool CanStart => !_started && PlayerInRange &&
             Time.time - _completionTime >= _cooldown;
 
         private DialogueManager _dialogueManager;
-        private PlayerMovement _playermovement;
         private bool _started = false;
         private float _completionTime = 0;
 
@@ -27,31 +24,21 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
 
         private void Update()
         {
-            if (!CanStart || !Input.GetButtonUp(InputConstants.FIRE_1))
+            if (!CanStart || !Triggered)
                 return;
 
             _started = true;
-            _playermovement.SetMovementState(false);
+            Player.SetMovementState(false);
             _dialogueManager.Show(_dialogue, _hasName, OnDialogueCompleted);
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.transform.TryGetComponent(out PlayerMovement playerMovement))
-                _playermovement = playerMovement;
-        }
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.transform.TryGetComponent(out PlayerMovement _))
-                _playermovement = null;
-        }
 
         private void OnDialogueCompleted()
         {
             _completionTime = Time.time;
             _started = false;
-            _playermovement.SetMovementState(true);
+            Player.SetMovementState(true);
         }
     }
 }

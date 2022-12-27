@@ -13,6 +13,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
     {
         [Header("Texts")]
         [SerializeField] private TextMeshProUGUI _useButtonText;
+        [SerializeField] private TextMeshProUGUI _itemInfoText;
 
         [Header("Buttons")]
         [SerializeField] private Button _useButton;
@@ -34,7 +35,6 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
         private List<ChoiceButton> _choiceButtons;
         private IInventoryService _inventory;
-        private InventoryItem _selectedItem;
 
         private void Awake()
         {
@@ -89,16 +89,16 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
         {
             _choicePanel.SetActive(false);
 
-            if (_selectedItem is not ICharacterStatsApplicable applicable)
+            if (_itemsViewer.LastSelected is not ICharacterStatsApplicable applicable)
                 return;
 
             applicable.Apply(character);
-            _inventory.Remove(_selectedItem);
+            _inventory.Remove(_itemsViewer.LastSelected);
         }
 
         private void SelectItem(InventoryItem item)
         {
-            _selectedItem = item;
+            _itemInfoText.SetText($"{item.Name} - {item.GetDescription()}");
             _useButtonText.SetText(item is EquipableInventoryItem ? EQUIP_BUTTON_LABLE : DEFAULT_BUTTON_LABLE);
             _useButton.interactable = item is ICharacterStatsApplicable;
         }
@@ -108,13 +108,13 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
         private void DiscardSelectedItem()
         {
-            int count = _inventory.Count(_selectedItem);
-            _inventory.Remove(_selectedItem, count);
+            int count = _inventory.Count(_itemsViewer.LastSelected);
+            _inventory.Remove(_itemsViewer.LastSelected, count);
         }
 
         private void ResetPanels()
         {
-            _selectedItem = null;
+            _itemInfoText.SetText("Pick an item");
             _actionPanel.SetActive(false);
             _choicePanel.SetActive(false);
         }

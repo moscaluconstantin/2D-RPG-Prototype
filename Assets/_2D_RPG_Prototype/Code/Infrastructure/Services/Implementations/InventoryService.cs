@@ -31,6 +31,17 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
         public bool Contains(InventoryItem item, int amount = 1) =>
             Count(item) >= amount;
 
+        public bool Contains(Price[] priceList)
+        {
+            foreach (var price in priceList)
+            {
+                if (!Contains(price.Item, price.Count))
+                    return false;
+            }
+
+            return true;
+        }
+
         public void Add(InventoryItem item, int amount = 1)
         {
             if (_slots.Any(x => x.Item.Id == item.Id))
@@ -49,6 +60,12 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             OnItemsAmountChanged?.Invoke();
         }
 
+        public void Add(Price[] priceList)
+        {
+            foreach (var price in priceList)
+                Add(price.Item, price.Count);
+        }
+
         public void Remove(InventoryItem item, int amount = 1)
         {
             if (_slots.Any(x => x.Item.Id == item.Id))
@@ -65,6 +82,12 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
                 _slots.Remove(slot);
                 OnItemsAmountChanged?.Invoke();
             }
+        }
+
+        public void Remove(Price[] priceList)
+        {
+            foreach (var price in priceList)
+                Remove(price.Item, price.Count);
         }
     }
 }

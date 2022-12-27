@@ -1,4 +1,5 @@
-﻿using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
+﻿using Assets._2D_RPG_Prototype.Code.Data;
+using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
 using System;
 
 namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces
@@ -13,7 +14,10 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces
         int Count();
         int Count(InventoryItem item);
         bool Contains(InventoryItem item, int amount = 1);
+        bool Contains(Price[] priceList);
         void Add(InventoryItem item, int amount = 1);
         void Remove(InventoryItem item, int amount = 1);
+        void Remove(Price[] priceList);
+        void Add(Price[] priceList);
     }
 }

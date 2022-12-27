@@ -3,7 +3,6 @@ using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
@@ -11,29 +10,32 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
     public class InventoryItemsViewer : MonoBehaviour
     {
         [SerializeField] private InventoryButton _buttonPrefab;
-        [SerializeField] private TextMeshProUGUI _itemInfoText;
         [SerializeField] private Transform _container;
 
         public event Action<InventoryItem> itemSelected;
         public event Action selectedItemRemoved;
 
+        public InventoryItem LastSelected => _lastSelected;
+
         private IInventoryService _inventory;
         private List<InventoryButton> _buttons;
+        private List<int> _filter;
         private InventoryItem[] _items;
-        private bool _isInitialized = false;
         private InventoryItem _lastSelected = null;
+        private bool _isInitialized = false;
+        private bool _filterItems = false;
 
-        private void OnEnable() =>
-            ForgetSelected();
+        private void OnEnable()
+        {
+            _filter = null;
+            _filterItems = false;
+            _lastSelected = null;
+        }
 
         private void OnDestroy()
         {
-            if (_inventory != null)
-            {
-                _inventory.OnItemsAmountChanged -= RefreshButtons;
-                _inventory.OnItemsAmountChanged -= CheckSelectedItem;
-                _inventory.OnItemsCountChanged -= RefreshCounters;
-            }
+            if (_isInitialized)
+                UnsubscribeFromInventoryActions();
 
             foreach (var button in _buttons)
                 button.onItemSelect -= OnItemSelected;
@@ -42,15 +44,35 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
         public void Initialize(IInventoryService inventory)
         {
             if (_isInitialized)
-                return;
+                UnsubscribeFromInventoryActions();
 
             _inventory = inventory;
+
+            if (_isInitialized)
+                RefreshButtons();
+            else
+                InitializeButtons();
+
+            _isInitialized = true;
 
             _inventory.OnItemsAmountChanged += RefreshButtons;
             _inventory.OnItemsAmountChanged += CheckSelectedItem;
             _inventory.OnItemsCountChanged += RefreshCounters;
+        }
 
-            InitializeButtons();
+        public void Initialize(IInventoryService inventory, List<int> filter)
+        {
+            _filter = filter;
+            _filterItems = true;
+
+            Initialize(inventory);
+        }
+
+        private void UnsubscribeFromInventoryActions()
+        {
+            _inventory.OnItemsAmountChanged -= RefreshButtons;
+            _inventory.OnItemsAmountChanged -= CheckSelectedItem;
+            _inventory.OnItemsCountChanged -= RefreshCounters;
         }
 
         private void InitializeButtons()
@@ -66,10 +88,13 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
         private void RefreshButtons()
         {
-            if (_buttons.Count != _inventory.Count())
-                RefreshButtonsAmount();
-
             _items = _inventory.Items;
+
+            if (_filterItems)
+                _items = _items.Where(x => _filter.Contains(x.Id)).ToArray();
+
+            if (_buttons.Count != _items.Length)
+                RefreshButtonsAmount();
 
             for (int i = 0; i < _items.Length; i++)
                 _buttons[i].Initialize(_items[i], _inventory.Count(_items[i]));
@@ -77,7 +102,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
         private void RefreshButtonsAmount()
         {
-            int diff = _inventory.Count() - _buttons.Count;
+            int diff = _items.Length - _buttons.Count;
 
             if (diff > 0)
             {
@@ -103,9 +128,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
 
         private void OnItemSelected(InventoryItem item)
         {
-            _itemInfoText.SetText($"{item.Name} - {item.GetDescription()}");
             _lastSelected = item;
-
             itemSelected?.Invoke(item);
         }
 
@@ -120,15 +143,9 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
             if (_inventory.Count(_lastSelected) > 0)
                 return;
 
-            ForgetSelected();
+            _lastSelected = null;
 
             selectedItemRemoved?.Invoke();
-        }
-
-        private void ForgetSelected()
-        {
-            _lastSelected = null;
-            _itemInfoText.SetText("Pick an item");
         }
     }
 }

@@ -16,3 +16,4 @@ MonoBehaviour:
   _name: Silver Coin
   _description: One of the main currency
   _image: {fileID: -829414895, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 42

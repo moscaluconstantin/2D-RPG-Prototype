@@ -19,10 +19,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
         [SerializeField] private Button _sellButton;
         [SerializeField] private Button _closeButton;
 
-        [Header("Compinents")]
+        [Header("Components")]
         [SerializeField] private InventoryItemsViewer _itemsViewer;
         [SerializeField] private ShopActionPanel _buyActionPanel;
         [SerializeField] private ShopActionPanel _sellActionPanel;
+        [SerializeField] private MoneyPanel _shopMoneyPanel;
+        [SerializeField] private MoneyPanel _playerMoneyPanel;
 
         private IInventoryService _playerInventory;
         private Shopkeeper _shopkeeper;
@@ -30,6 +32,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
         private void Awake()
         {
             _playerInventory = ServiceProvider.GetService<IInventoryService>();
+            _playerMoneyPanel.Initialize(_playerInventory);
 
             _buyButton.onClick.AddListener(OpenBuyWindow);
             _sellButton.onClick.AddListener(OpenSellWindow);
@@ -40,10 +43,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
             InitActionPanels();
         }
 
-        private void Start()
-        {
+        private void Start() =>
             Hide();
-        }
 
         private void OnDestroy()
         {
@@ -59,6 +60,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
             _shopkeeper = shopkeeper;
 
             gameObject.SetActive(true);
+            _shopMoneyPanel.Initialize(shopkeeper.Inventory);
             ResetItemInfoText();
             OpenBuyWindow();
         }
@@ -82,16 +84,24 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
 
         private void OpenBuyWindow()
         {
+            ResetItemInfoText();
             _itemsViewer.Initialize(_shopkeeper.Inventory);
             _sellActionPanel.Deactivate();
             _buyActionPanel.Activate(_shopkeeper);
+
+            _buyButton.interactable = false;
+            _sellButton.interactable = true;
         }
 
         private void OpenSellWindow()
         {
+            ResetItemInfoText();
             _itemsViewer.Initialize(_playerInventory, _shopkeeper.ForBuyingIds);
             _buyActionPanel.Deactivate();
             _sellActionPanel.Activate(_shopkeeper);
+
+            _buyButton.interactable = true;
+            _sellButton.interactable = false;
         }
 
         private void OnitemSelected(InventoryItem item) =>

@@ -1,6 +1,7 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,15 +14,18 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
         private Dictionary<Type, UIWindow> _windows;
         private UIWindow _activeWindow;
+        private ICoroutineRunner _coroutineRunner;
 
         private void Awake()
         {
             _windows = new Dictionary<Type, UIWindow>();
-            ServiceProvider.AddService<IUIService>(this);
+            _coroutineRunner = ServiceProvider.GetService<ICoroutineRunner>();
 
             var windows = GetComponentsInChildren<UIWindow>();
             foreach (var window in windows)
                 window.Initialize(this);
+
+            ServiceProvider.AddService<IUIService>(this);
         }
 
         public void AddWindow<T>(UIWindow window) where T : UIWindow
@@ -47,6 +51,12 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             _activeWindow = uiWindow;
 
         public void ClearActiveWindow() =>
+            _coroutineRunner.StartCoroutine(ClearOnNextFrame());
+
+        private IEnumerator ClearOnNextFrame()
+        {
+            yield return null;
             _activeWindow = null;
+        }
     }
 }

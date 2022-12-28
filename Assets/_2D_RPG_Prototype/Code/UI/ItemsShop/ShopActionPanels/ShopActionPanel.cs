@@ -77,6 +77,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop.ShopActionPanels
         protected virtual void OnitemSelected(InventoryItem item) =>
             Show();
 
+        protected abstract void CheckPrice();
+
         protected void SetPriceText(string text) =>
             _itemPriceText.SetText(text);
 

@@ -19,11 +19,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop.ShopActionPanels
         {
             PlayerInventory.Remove(PriceList);
             PlayerInventory.Add(ItemsViewer.LastSelected);
+            Shopkeeper.Inventory.Add(PriceList);
             Shopkeeper.Inventory.Remove(ItemsViewer.LastSelected);
             CheckPrice();
         }
 
-        private void CheckPrice() =>
+        protected override void CheckPrice() =>
             SetButtonState(PriceList != null && PlayerInventory.Contains(PriceList));
     }
 }

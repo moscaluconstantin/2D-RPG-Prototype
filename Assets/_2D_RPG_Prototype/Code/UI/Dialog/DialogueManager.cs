@@ -2,6 +2,7 @@
 using Assets._2D_RPG_Prototype.Code.Infrastructure;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI.Dialog;
+using Assets._2D_RPG_Prototype.Code.UI.ItemsShop;
 using System;
 using System.Collections;
 using System.Text;
@@ -10,7 +11,7 @@ using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.UI
 {
-    public class DialogueManager : MonoBehaviour
+    public class DialogueManager : UIWindow
     {
         [SerializeField] private int _animationSpeed = 10;
 
@@ -70,6 +71,10 @@ namespace Assets._2D_RPG_Prototype.Code.UI
 
         public void Show(Dialogue dialogue, bool showName, Action onComplete = null)
         {
+
+            if (!TrySetAsActiveWindow())
+                return;
+
             Clear();
 
             _nameBox.SetActive(showName);
@@ -81,8 +86,10 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             ShowCurrentLine();
         }
 
-        public void Hide()
+        private void Hide()
         {
+            UIService.ClearActiveWindow();
+
             _container.SetActive(false);
             _started = false;
             _onComplete = null;
@@ -90,6 +97,9 @@ namespace Assets._2D_RPG_Prototype.Code.UI
             if (_coroutine != null)
                 _coroutineRunner.StopCoroutine(_coroutine);
         }
+
+        protected override void AddToUIService() =>
+            UIService.AddWindow<DialogueManager>(this);
 
         private void Clear()
         {

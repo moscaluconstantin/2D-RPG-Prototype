@@ -20,7 +20,7 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
         private float _completionTime = 0;
 
         private void Start() =>
-            _dialogueManager = ServiceProvider.GetService<IUIService>().DialogueManager;
+            _dialogueManager = ServiceProvider.GetService<IUIService>().GetWindow<DialogueManager>();
 
         private void Update()
         {

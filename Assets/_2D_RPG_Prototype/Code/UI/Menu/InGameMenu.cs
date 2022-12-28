@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.UI.Menu
 {
-    public class InGameMenu : MonoBehaviour
+    public class InGameMenu : UIWindow
     {
         [SerializeField] private MenuContentType _defaultContentType;
 
@@ -63,6 +63,9 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
             print("Quit");
         }
 
+        protected override void AddToUIService() =>
+            UIService.AddWindow<InGameMenu>(this);
+
         private void InitContentButtons()
         {
             _contentButtons = _contentButtonsContainer.GetComponentsInChildren<MenuContentButton>();
@@ -88,13 +91,30 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
                 item.Value.SetActive(false);
         }
 
-        private void Toggle() =>
-            SetMenuState(!_isActive);
+        private void Toggle()
+        {
+            if (_isActive) Hide();
+            else Show();
+        }
 
         private void SetMenuState(bool state)
         {
             _isActive = state;
             _container.SetActive(state);
+        }
+
+        private void Show()
+        {
+            if (!TrySetAsActiveWindow())
+                return;
+
+            SetMenuState(true);
+        }
+
+        private void Hide()
+        {
+            UIService.ClearActiveWindow();
+            SetMenuState(false);
         }
 
         private void OpenContent(MenuContentType contentType)

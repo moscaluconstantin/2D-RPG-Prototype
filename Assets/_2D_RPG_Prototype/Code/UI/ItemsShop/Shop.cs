@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
 {
-    public class Shop : MonoBehaviour
+    public class Shop : UIWindow
     {
         [SerializeField] private TextMeshProUGUI _itemInfoText;
 
@@ -57,6 +57,9 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
 
         public void Show(Shopkeeper shopkeeper)
         {
+            if (!TrySetAsActiveWindow())
+                return;
+
             _shopkeeper = shopkeeper;
 
             gameObject.SetActive(true);
@@ -64,6 +67,9 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
             ResetItemInfoText();
             OpenBuyWindow();
         }
+
+        protected override void AddToUIService() =>
+            UIService.AddWindow<Shop>(this);
 
         private void InitActionPanels()
         {
@@ -76,6 +82,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
 
         private void Hide()
         {
+            UIService.ClearActiveWindow();
+
             _buyActionPanel.Deactivate();
             _sellActionPanel.Deactivate();
 

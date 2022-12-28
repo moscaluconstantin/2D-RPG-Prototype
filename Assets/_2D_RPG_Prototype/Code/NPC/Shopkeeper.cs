@@ -27,7 +27,7 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
 
         private void Awake()
         {
-            _shop = ServiceProvider.GetService<IUIService>().Shop;
+            _shop = ServiceProvider.GetService<IUIService>().GetWindow<Shop>();
             _forBuyingIds = _forBuying.Select(x => x.Item.Id).ToList();
 
             InitInventory();

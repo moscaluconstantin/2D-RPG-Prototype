@@ -89,5 +89,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             foreach (var price in priceList)
                 Remove(price.Item, price.Count);
         }
+
+        public void Clear() =>
+            _slots.Clear();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
+﻿using Assets._2D_RPG_Prototype.Code.Data;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.NPC;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
 using Assets._2D_RPG_Prototype.Code.UI.Inventory;
@@ -17,8 +18,10 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop.ShopActionPanels
         protected InventoryItemsViewer ItemsViewer;
         protected IInventoryService PlayerInventory;
         protected Shopkeeper Shopkeeper;
+        protected Price[] PriceList;
 
         private bool _isInitialized = false;
+        private bool _isActive = false;
 
         private void Awake()
         {
@@ -43,21 +46,30 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop.ShopActionPanels
 
         public void Activate(Shopkeeper shopkeeper)
         {
-            if (!_isInitialized)
+            Hide();
+
+            if (!_isInitialized || _isActive)
                 return;
 
             Shopkeeper = shopkeeper;
 
             ItemsViewer.itemSelected += OnitemSelected;
             ItemsViewer.selectedItemRemoved += Hide;
+
+            _isActive = true;
         }
 
         public void Deactivate()
         {
+            if (!_isInitialized)
+                return;
+
             Hide();
 
             ItemsViewer.itemSelected -= OnitemSelected;
             ItemsViewer.selectedItemRemoved -= Hide;
+
+            _isActive = false;
         }
 
         protected abstract void OnButtonClicked();

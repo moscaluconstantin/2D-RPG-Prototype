@@ -5,7 +5,7 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
 {
     public abstract class InteractableNPC : MonoBehaviour
     {
-        protected bool Triggered => Input.GetButtonUp(InputConstants.FIRE_1);
+        protected bool Triggered => PlayerInRange && Input.GetButtonUp(InputConstants.FIRE_1);
 
         protected PlayerMovement Player;
         protected bool PlayerInRange = false;

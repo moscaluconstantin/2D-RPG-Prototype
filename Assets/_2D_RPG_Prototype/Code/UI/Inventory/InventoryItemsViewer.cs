@@ -37,8 +37,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
             if (_isInitialized)
                 UnsubscribeFromInventoryActions();
 
-            foreach (var button in _buttons)
-                button.onItemSelect -= OnItemSelected;
+            //foreach (var button in _buttons)
+            //    button.onItemSelect -= OnItemSelected;
         }
 
         public void Initialize(IInventoryService inventory)
@@ -116,6 +116,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Inventory
             else if (diff < 0)
             {
                 var toRemove = _buttons.Take(Mathf.Abs(diff)).ToList();
+
 
                 foreach (var button in toRemove)
                 {

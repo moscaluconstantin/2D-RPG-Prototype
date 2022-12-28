@@ -85,7 +85,7 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
         private void OpenBuyWindow()
         {
             ResetItemInfoText();
-            _itemsViewer.Initialize(_shopkeeper.Inventory);
+            _itemsViewer.Initialize(_shopkeeper.Inventory, _shopkeeper.ForBuyingIds);
             _sellActionPanel.Deactivate();
             _buyActionPanel.Activate(_shopkeeper);
 

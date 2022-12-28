@@ -12,11 +12,10 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
         [SerializeField] private float _cooldown = 2;
         [SerializeField] private bool _hasName = true;
 
-        public bool CanStart => !_started && PlayerInRange &&
+        public bool CanStart => PlayerInRange &&
             Time.time - _completionTime >= _cooldown;
 
         private DialogueManager _dialogueManager;
-        private bool _started = false;
         private float _completionTime = 0;
 
         private void Start() =>
@@ -27,16 +26,10 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
             if (!CanStart || !Triggered)
                 return;
 
-            _started = true;
             _dialogueManager.Show(_dialogue, _hasName, OnDialogueCompleted);
         }
 
-
-
-        private void OnDialogueCompleted()
-        {
+        private void OnDialogueCompleted() =>
             _completionTime = Time.time;
-            _started = false;
-        }
     }
 }

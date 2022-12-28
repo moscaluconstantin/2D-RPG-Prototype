@@ -22,7 +22,6 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
         public List<int> ForBuyingIds => _forBuyingIds;
 
         private Shop _shop;
-        private bool _opened = false;
         private List<int> _forBuyingIds;
 
         private void Awake()
@@ -35,10 +34,9 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
 
         private void Update()
         {
-            if (_opened || !Triggered)
+            if (!Triggered)
                 return;
 
-            _opened = true;
             _shop.Show(this);
         }
 

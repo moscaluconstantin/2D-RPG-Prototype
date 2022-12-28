@@ -14,6 +14,9 @@ namespace Assets._2D_RPG_Prototype.Code
 
         private bool _isMoving;
 
+        private void Awake() =>
+            _animator.SetFloat(IDLE_Y, -1);
+
         public void SetMovementState(bool isMoving)
         {
             _isMoving = isMoving;

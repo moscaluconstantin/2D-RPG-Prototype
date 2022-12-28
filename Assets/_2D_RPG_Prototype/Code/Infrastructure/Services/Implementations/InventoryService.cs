@@ -17,6 +17,9 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
         public InventoryItem[] Items => _slots.Select(x => x.Item).ToArray();
 
+        private void Awake() =>
+            SortItems();
+
         public int Count() =>
             _slots.Count;
 
@@ -56,6 +59,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
                 Item = item,
                 Count = amount
             });
+            SortItems();
 
             OnItemsAmountChanged?.Invoke();
         }
@@ -92,5 +96,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
         public void Clear() =>
             _slots.Clear();
+
+        private void SortItems() => 
+            _slots = _slots.OrderBy(x => x.Item.Id).ToList();
     }
 }

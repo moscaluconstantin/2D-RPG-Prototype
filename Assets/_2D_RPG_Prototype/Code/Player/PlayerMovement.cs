@@ -1,5 +1,7 @@
 using Assets._2D_RPG_Prototype.Code;
 using Assets._2D_RPG_Prototype.Code.Constants;
+using Assets._2D_RPG_Prototype.Code.Infrastructure;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -12,29 +14,43 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private PlayerAnimator _animator;
 
+    private bool CanMove => _movementState && !_uiService.AnyWindowActive;
+
     private const float MIN_INPUT = .1f;
 
-    private bool _canMove = true;
-    private Vector2 input;
+    private IUIService _uiService;
+    private bool _movementState = true;
+    private Vector2 _input;
     private Vector3 _boundsMin;
     private Vector3 _boundsMax;
 
+    private void Awake() =>
+        _uiService = ServiceProvider.GetService<IUIService>();
+
     private void Update()
     {
-        if (!_canMove)
-            return;
+        if (!CanMove)
+        {
+            if (_input.sqrMagnitude > MIN_INPUT)
+            {
+                _input = Vector2.zero;
+                UpdateAnimatorValues();
+            }
 
-        input = new(Input.GetAxisRaw(InputConstants.AXES_HORIZONTAL), Input.GetAxisRaw(InputConstants.AXES_VERTICAL));
+            return;
+        }
+
+        _input = new(Input.GetAxisRaw(InputConstants.AXES_HORIZONTAL), Input.GetAxisRaw(InputConstants.AXES_VERTICAL));
 
         UpdateAnimatorValues();
     }
 
     private void FixedUpdate()
     {
-        if (!_canMove)
+        if (!CanMove)
             return;
 
-        var movement = (Vector3)(input.normalized * (_movementSpeed * Time.fixedDeltaTime));
+        var movement = (Vector3)(_input.normalized * (_movementSpeed * Time.fixedDeltaTime));
         var to = GetClampedPosition(movement);
         _rigidBody.MovePosition(to);
     }
@@ -45,10 +61,10 @@ public class PlayerMovement : MonoBehaviour
         _boundsMax = tilemap.localBounds.max - (Vector3)_boundsOffset;
     }
 
-    public void SetMovementState(bool candMove)
+    public void SetMovementState(bool movementState)
     {
-        _canMove = candMove;
-        input = Vector2.zero;
+        _movementState = movementState;
+        _input = Vector2.zero;
 
         UpdateAnimatorValues();
     }
@@ -67,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void UpdateAnimatorValues()
     {
-        _animator.SetMovementState(input.magnitude > MIN_INPUT);
-        _animator.SetMovementValue(input);
+        _animator.SetMovementState(_input.magnitude > MIN_INPUT);
+        _animator.SetMovementValue(_input);
     }
 }

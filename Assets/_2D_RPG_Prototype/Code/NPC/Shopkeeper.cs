@@ -39,7 +39,6 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
                 return;
 
             _opened = true;
-            Player.SetMovementState(false);
             _shop.Show(this);
         }
 

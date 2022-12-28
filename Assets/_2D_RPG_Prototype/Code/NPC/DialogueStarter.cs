@@ -28,7 +28,6 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
                 return;
 
             _started = true;
-            Player.SetMovementState(false);
             _dialogueManager.Show(_dialogue, _hasName, OnDialogueCompleted);
         }
 
@@ -38,7 +37,6 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
         {
             _completionTime = Time.time;
             _started = false;
-            Player.SetMovementState(true);
         }
     }
 }

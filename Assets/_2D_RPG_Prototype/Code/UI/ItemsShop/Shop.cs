@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
 {
-    public class Shop : UIWindow
+    public class Shop : UIWindow, IControlableWindow
     {
         [SerializeField] private TextMeshProUGUI _itemInfoText;
 
@@ -67,6 +67,9 @@ namespace Assets._2D_RPG_Prototype.Code.UI.ItemsShop
             ResetItemInfoText();
             OpenBuyWindow();
         }
+
+        void IControlableWindow.Hide() =>
+            Hide();
 
         protected override void AddToUIService() =>
             UIService.AddWindow<Shop>(this);

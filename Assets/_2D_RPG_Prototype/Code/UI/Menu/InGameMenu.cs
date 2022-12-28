@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.UI.Menu
 {
-    public class InGameMenu : UIWindow
+    public class InGameMenu : UIWindow, IControlableWindow
     {
         [SerializeField] private MenuContentType _defaultContentType;
 
@@ -22,7 +22,6 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
         private Dictionary<MenuContentType, MenuContentButton> _buttonsDictionary;
         private Dictionary<MenuContentType, GameObject> _windowsDictionary;
         private MenuContentType _selectedContentType;
-        private bool _isActive;
 
         private void Start()
         {
@@ -39,12 +38,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
                 button.OnClicked -= OpenContent;
         }
 
-        private void Update()
+        public void Show()
         {
-            if (!Input.GetKeyUp(KeyCode.Escape))
+            if (!TrySetAsActiveWindow())
                 return;
 
-            Toggle();
+            _container.SetActive(true);
         }
 
         public void Save()
@@ -52,16 +51,14 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
             print("Save");
         }
 
-        public void Close()
-        {
-            print("Close");
-            SetMenuState(false);
-        }
+        public void Close() =>
+            Hide();
 
-        public void Quit()
-        {
-            print("Quit");
-        }
+        public void Quit() =>
+            Application.Quit();
+
+        void IControlableWindow.Hide() =>
+            Hide();
 
         protected override void AddToUIService() =>
             UIService.AddWindow<InGameMenu>(this);
@@ -91,30 +88,10 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
                 item.Value.SetActive(false);
         }
 
-        private void Toggle()
-        {
-            if (_isActive) Hide();
-            else Show();
-        }
-
-        private void SetMenuState(bool state)
-        {
-            _isActive = state;
-            _container.SetActive(state);
-        }
-
-        private void Show()
-        {
-            if (!TrySetAsActiveWindow())
-                return;
-
-            SetMenuState(true);
-        }
-
         private void Hide()
         {
             UIService.ClearActiveWindow();
-            SetMenuState(false);
+            _container.SetActive(false);
         }
 
         private void OpenContent(MenuContentType contentType)

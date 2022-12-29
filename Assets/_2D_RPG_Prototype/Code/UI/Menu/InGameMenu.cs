@@ -28,7 +28,6 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
             InitContentButtons();
             InitContentWindows();
 
-            OpenContent(_defaultContentType);
             Close();
         }
 
@@ -44,6 +43,23 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
                 return;
 
             _container.SetActive(true);
+            OpenContent(_defaultContentType);
+        }
+
+        public void OpenContent(MenuContentType contentType)
+        {
+            if (_selectedContentType == contentType)
+                return;
+
+            if (_buttonsDictionary.TryGetValue(_selectedContentType, out var selectedButton))
+                selectedButton.Deselect();
+            _buttonsDictionary[contentType].Select();
+
+            if (_windowsDictionary.TryGetValue(_selectedContentType, out var selectedWindow))
+                selectedWindow.SetActive(false);
+            _windowsDictionary[contentType].SetActive(true);
+
+            _selectedContentType = contentType;
         }
 
         public void Save()
@@ -92,22 +108,6 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
         {
             UIService.ClearActiveWindow();
             _container.SetActive(false);
-        }
-
-        private void OpenContent(MenuContentType contentType)
-        {
-            if (_selectedContentType == contentType)
-                return;
-
-            if (_buttonsDictionary.TryGetValue(_selectedContentType, out var selectedButton))
-                selectedButton.Deselect();
-            _buttonsDictionary[contentType].Select();
-
-            if (_windowsDictionary.TryGetValue(_selectedContentType, out var selectedWindow))
-                selectedWindow.SetActive(false);
-            _windowsDictionary[contentType].SetActive(true);
-
-            _selectedContentType = contentType;
         }
     }
 }

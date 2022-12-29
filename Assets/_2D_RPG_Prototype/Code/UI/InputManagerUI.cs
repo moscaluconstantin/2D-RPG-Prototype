@@ -25,6 +25,16 @@ namespace Assets._2D_RPG_Prototype.Code.UI
                 return;
             }
 
+            if (Input.GetKeyUp(KeyCode.I))
+            {
+                if (_uiService.AnyWindowActive && _uiService.ActiveWindow != _inGameMenu)
+                    return;
+
+                if (!_uiService.AnyWindowActive)
+                    _inGameMenu.Show();
+
+                _inGameMenu.OpenContent(Enums.MenuContentType.Inventory);
+            }
         }
     }
 }

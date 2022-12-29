@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Mana Ring
   _description: Increases max mana by _v0 points
   _image: {fileID: 352854055, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 61
   _stats:
   - _type: 2
     _value: 20

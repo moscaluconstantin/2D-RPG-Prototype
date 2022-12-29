@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Green Apple
   _description: Restores _v0 health points. Can be used to craft Defence Potion
   _image: {fileID: 278282648, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 19
   _stats:
   - _type: 1
     _value: 1

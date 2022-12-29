@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Health Potion
   _description: Restores _v0 health points
   _image: {fileID: 1520697666, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 0
   _stats:
   - _type: 1
     _value: 50

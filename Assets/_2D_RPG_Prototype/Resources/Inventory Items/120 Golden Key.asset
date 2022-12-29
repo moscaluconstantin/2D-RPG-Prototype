@@ -16,3 +16,4 @@ MonoBehaviour:
   _name: Golden Key
   _description: It must open something
   _image: {fileID: -247738210, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 62

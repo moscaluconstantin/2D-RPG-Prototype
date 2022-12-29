@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Lemon
   _description: Restores _v0 mana points. Can be used to craft Speed Potion
   _image: {fileID: 301528704, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 17
   _stats:
   - _type: 2
     _value: 1

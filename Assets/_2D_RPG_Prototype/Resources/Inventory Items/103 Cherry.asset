@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Cherry
   _description: Restores _v0 health points and _v1 mana points
   _image: {fileID: -1202845026, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 12
   _stats:
   - _type: 1
     _value: 2

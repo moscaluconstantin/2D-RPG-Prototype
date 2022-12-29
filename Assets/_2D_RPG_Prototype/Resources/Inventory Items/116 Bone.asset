@@ -16,3 +16,4 @@ MonoBehaviour:
   _name: Bone
   _description: Bone obtained from skeleton monster
   _image: {fileID: 1501064264, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 35

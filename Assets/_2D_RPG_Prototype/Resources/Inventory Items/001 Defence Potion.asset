@@ -16,7 +16,8 @@ MonoBehaviour:
   _name: Defence Potion
   _description: Increases defence by _v0% for _d seconds
   _image: {fileID: 577939478, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  _duration: 60
+  _glyphIndex: 1
   _stats:
   - _type: 5
     _value: 20
+  _duration: 60

@@ -16,3 +16,4 @@ MonoBehaviour:
   _name: Green Crystal
   _description: Expensive crystal. Can be used to craft Defence Potion
   _image: {fileID: -620058387, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 25

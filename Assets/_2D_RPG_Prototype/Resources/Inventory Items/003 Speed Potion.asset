@@ -16,7 +16,8 @@ MonoBehaviour:
   _name: Speed Potion
   _description: Increases speed by _v0% for _d seconds
   _image: {fileID: 1603791896, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  _duration: 60
+  _glyphIndex: 3
   _stats:
   - _type: 6
     _value: 100
+  _duration: 60

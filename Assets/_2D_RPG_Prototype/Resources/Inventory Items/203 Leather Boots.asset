@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Leather Boots
   _description: Increases defence by _v0 points
   _image: {fileID: 713529210, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 9
   _stats:
   - _type: 5
     _value: 10

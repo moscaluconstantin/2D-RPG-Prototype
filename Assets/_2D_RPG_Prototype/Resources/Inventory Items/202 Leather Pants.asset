@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Leather Pants
   _description: Increases defence by _v0 points
   _image: {fileID: -1142474688, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 13
   _stats:
   - _type: 5
     _value: 10

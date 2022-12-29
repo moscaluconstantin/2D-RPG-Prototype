@@ -16,6 +16,7 @@ MonoBehaviour:
   _name: Eggs
   _description: Restores _v0 health points and _v1 mana points
   _image: {fileID: 1861226797, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 11
   _stats:
   - _type: 1
     _value: 5

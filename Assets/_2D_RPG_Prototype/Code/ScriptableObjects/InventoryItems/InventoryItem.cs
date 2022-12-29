@@ -1,4 +1,5 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Constants;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
@@ -23,5 +24,11 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems
 
         public override string ToString() =>
             Glypth;
+
+        [ContextMenu("Set Glyph By Image")]
+        private void SetGlyphByImage()
+        {
+            Debug.Log(_image.name);
+        }
     }
 }

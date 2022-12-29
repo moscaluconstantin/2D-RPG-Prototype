@@ -16,7 +16,8 @@ MonoBehaviour:
   _name: Bronze Two-Handed Sword
   _description: Increases damage by _v0 points
   _image: {fileID: 1747559894, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  _slotType: 8
+  _glyphIndex: 37
   _stats:
   - _type: 4
     _value: 0
+  _slotType: 8

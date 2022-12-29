@@ -16,3 +16,4 @@ MonoBehaviour:
   _name: Golden Ingot
   _description: Can be melt to coins or just sold
   _image: {fileID: -11795953, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 32

@@ -16,7 +16,8 @@ MonoBehaviour:
   _name: Steel Glooves
   _description: Increases defence by _v0 points
   _image: {fileID: -945477089, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
-  _slotType: 3
+  _glyphIndex: 23
   _stats:
   - _type: 5
     _value: 20
+  _slotType: 3

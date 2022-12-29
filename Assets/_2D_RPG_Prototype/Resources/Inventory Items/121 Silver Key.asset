@@ -16,3 +16,4 @@ MonoBehaviour:
   _name: Silver Key
   _description: It must open something
   _image: {fileID: -1666793315, guid: 0bc4ed27aef38a44bb72e80f9beb5326, type: 3}
+  _glyphIndex: 59

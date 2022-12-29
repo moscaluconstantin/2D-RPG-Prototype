@@ -6,11 +6,6 @@
         public const string BASE_PATH = "ScriptableObjects/";
         public const string PROGRESSIONS = BASE_PATH + "Progressions/";
         public const string INVENTORY_ITEMS = BASE_PATH + "InventoryItems/";
-    }
-
-    public static class ResourceFileNames
-    {
-        public const string PROGRESSION = "Progression";
-        public const string INVENTORY_ITEM = "Inventory Item";
+        public const string QUESTS = BASE_PATH + "Quests/";
     }
 }

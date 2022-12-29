@@ -4,5 +4,6 @@
     {
         public const string STATS = "Character Stats";
         public const string INVENTORY_ITEMS = "Inventory Items";
+        public const string QUESTS = "Quests";
     }
 }

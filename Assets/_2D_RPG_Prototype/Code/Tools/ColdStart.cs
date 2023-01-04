@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEditor.SceneManagement;
 
-namespace Assets._2D_RPG_Prototype.Code.Infrastructure
+namespace Assets._2D_RPG_Prototype.Code.Tools
 {
     [InitializeOnLoad]
     public static class ColdStart

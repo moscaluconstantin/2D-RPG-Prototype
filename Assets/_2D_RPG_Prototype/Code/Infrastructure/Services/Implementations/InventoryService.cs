@@ -109,11 +109,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             var items = _slots.Select(x => x.Item.Id).ToArray();
             var counters = _slots.Select(x => x.Count).ToArray();
 
-            string serializedItems = Serialize(items);
-            string serializedCounters = Serialize(counters);
-
-            PlayerPrefs.SetString(ItemsSaveKey, serializedItems);
-            PlayerPrefs.SetString(CountersSaveKey, serializedCounters);
+            SaveLoadService.Save(ItemsSaveKey, items);
+            SaveLoadService.Save(CountersSaveKey, counters);
         }
 
         public void Load()
@@ -124,11 +121,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             Clear();
 
             var resourcesDatabase = ServiceProvider.GetService<IResourcesDatabase>();
-            string serializedItems = PlayerPrefs.GetString(ItemsSaveKey, string.Empty);
-            string serializedCounters = PlayerPrefs.GetString(CountersSaveKey, string.Empty);
-
-            var items = Deserialize(serializedItems);
-            var counters = Deserialize(serializedCounters);
+            var items = SaveLoadService.Load(ItemsSaveKey, new int[0]);
+            var counters = SaveLoadService.Load(CountersSaveKey, new int[0]);
 
             for (int i = 0; i < items.Length; i++)
             {
@@ -136,11 +130,5 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
                 Add(item, counters[i]);
             }
         }
-
-        private string Serialize(int[] array) =>
-            string.Join(",", array);
-
-        private int[] Deserialize(string serialized) =>
-            serialized.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
     }
 }

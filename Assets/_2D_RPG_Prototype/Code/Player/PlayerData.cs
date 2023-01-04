@@ -1,5 +1,5 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Constants;
-using UnityEngine;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
 
 namespace Assets._2D_RPG_Prototype.Code.Player
 {
@@ -8,14 +8,8 @@ namespace Assets._2D_RPG_Prototype.Code.Player
         public string SceneName;
         public string TransitionPointKey;
 
-        public static PlayerData Load()
+        public static PlayerData Default()
         {
-            if (PlayerPrefs.HasKey(SaveKeys.PLAYER_DATA))
-            {
-                string savedPlayerData = PlayerPrefs.GetString(SaveKeys.PLAYER_DATA, "");
-                return JsonUtility.FromJson<PlayerData>(savedPlayerData);
-            }
-
             return new PlayerData()
             {
                 SceneName = GameConstants.DEFAULT_SCENE,
@@ -23,7 +17,10 @@ namespace Assets._2D_RPG_Prototype.Code.Player
             };
         }
 
+        public static PlayerData Load() =>
+            SaveLoadService.Load(SaveKeys.PLAYER_DATA, Default());
+
         public void Save() =>
-            PlayerPrefs.SetString(SaveKeys.PLAYER_DATA, JsonUtility.ToJson(this));
+            SaveLoadService.Save(SaveKeys.PLAYER_DATA, this);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets._2D_RPG_Prototype.Code.Data;
+﻿using Assets._2D_RPG_Prototype.Code.Constants;
+using Assets._2D_RPG_Prototype.Code.Data;
 using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.ScriptableObjects.InventoryItems;
 using System;
@@ -10,12 +11,15 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 {
     public class InventoryService : MonoBehaviour, IInventoryService
     {
+        [SerializeField] private string _saveKey = "unknown";
         [SerializeField] private List<InventorySlot> _slots;
 
         public event Action OnItemsAmountChanged;
         public event Action OnItemsCountChanged;
 
         public InventoryItem[] Items => _slots.Select(x => x.Item).ToArray();
+        private string ItemsSaveKey => $"{_saveKey}_{SaveKeys.INVENTORY_ITEMS}";
+        private string CountersSaveKey => $"{_saveKey}_{SaveKeys.INVENTORY_COUNTERS}";
 
         private void Awake() =>
             SortItems();
@@ -97,7 +101,46 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
         public void Clear() =>
             _slots.Clear();
 
-        private void SortItems() => 
+        private void SortItems() =>
             _slots = _slots.OrderBy(x => x.Item.Id).ToList();
+
+        public void Save()
+        {
+            var items = _slots.Select(x => x.Item.Id).ToArray();
+            var counters = _slots.Select(x => x.Count).ToArray();
+
+            string serializedItems = Serialize(items);
+            string serializedCounters = Serialize(counters);
+
+            PlayerPrefs.SetString(ItemsSaveKey, serializedItems);
+            PlayerPrefs.SetString(CountersSaveKey, serializedCounters);
+        }
+
+        public void Load()
+        {
+            if (!PlayerPrefs.HasKey(ItemsSaveKey) || !PlayerPrefs.HasKey(CountersSaveKey))
+                return;
+
+            Clear();
+
+            var resourcesDatabase = ServiceProvider.GetService<IResourcesDatabase>();
+            string serializedItems = PlayerPrefs.GetString(ItemsSaveKey, string.Empty);
+            string serializedCounters = PlayerPrefs.GetString(CountersSaveKey, string.Empty);
+
+            var items = Deserialize(serializedItems);
+            var counters = Deserialize(serializedCounters);
+
+            for (int i = 0; i < items.Length; i++)
+            {
+                var item = resourcesDatabase.GetInventoryItem(items[i]);
+                Add(item, counters[i]);
+            }
+        }
+
+        private string Serialize(int[] array) =>
+            string.Join(",", array);
+
+        private int[] Deserialize(string serialized) =>
+            serialized.Split(',').Select(x => Convert.ToInt32(x)).ToArray();
     }
 }

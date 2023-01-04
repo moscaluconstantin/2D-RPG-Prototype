@@ -44,42 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 766a83956a69ae74b92285b8b59bc1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _saveKey: player
   _slots:
-  - Item: {fileID: 11400000, guid: 4d7764586dd4e9440b10aef91d9d4545, type: 2}
-    Count: 3
-  - Item: {fileID: 11400000, guid: fb27595c37743f54fac80bf314e9b32f, type: 2}
-    Count: 5
-  - Item: {fileID: 11400000, guid: 9a4518b076a707c4fbc5b07a99570869, type: 2}
-    Count: 100
-  - Item: {fileID: 11400000, guid: 13434cb22cd2f36488fa2a9af85fa9ad, type: 2}
-    Count: 2
-  - Item: {fileID: 11400000, guid: 9ab6f8db76def354092dc2e9e41f3b74, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 865b030fe4cdc104088cdc106ad8e48d, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 4d876da226eeee0409839e302dae8f67, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 45e67827bbfb9514a9b0cc4130317c56, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 46ed2540166289243ae1fdb004335c68, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 3dd341d079480164da570b047ae23cac, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 689daf5b7bdd8b1428239cc4095205c5, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 4ef2cde7357801b46832e9e76ab3d653, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 3ac29eedfa78b6148bbe117b9a92415e, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 39bba7f9bf628e44bb2fc8d42a600bbd, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 34ceae72d269c5c488c06ac37fc8ef58, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 930e242f20c45a24ab464af8c91e784c, type: 2}
-    Count: 1
-  - Item: {fileID: 11400000, guid: 1e3e58e58d2a78a44b5852fd298b5dc9, type: 2}
-    Count: 1
   - Item: {fileID: 11400000, guid: a2d03c5027ccbfb47a84bdd572324abb, type: 2}
     Count: 3
   - Item: {fileID: 11400000, guid: 7551b15811cbe5246ad45f94d514f5b3, type: 2}
     Count: 3
+  - Item: {fileID: 11400000, guid: 9a4518b076a707c4fbc5b07a99570869, type: 2}
+    Count: 100

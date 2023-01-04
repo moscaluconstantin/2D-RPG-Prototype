@@ -19,6 +19,9 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
         {
             InitServices();
 
+            _inventory.Load();
+            _saveLoadService.OnSave += _inventory.Save;
+
             _coroutineRunner.StartCoroutine(Startup());
         }
 
@@ -28,6 +31,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             _sceneLoader.Initialize(_coroutineRunner, _screenFader);
             _saveLoadService = new SaveLoadService();
 
+            ServiceProvider.AddService<IResourcesDatabase>(new ResourcesDatabase());
             ServiceProvider.AddService<ICoroutineRunner>(_coroutineRunner);
             ServiceProvider.AddService<IScreenFader>(_screenFader);
             ServiceProvider.AddService<ISceneLoader>(_sceneLoader);

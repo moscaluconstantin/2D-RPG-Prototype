@@ -20,5 +20,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces
         void Remove(Price[] priceList);
         void Remove(InventoryItem item, int amount = 1);
         void Clear();
+        void Save();
+        void Load();
     }
 }

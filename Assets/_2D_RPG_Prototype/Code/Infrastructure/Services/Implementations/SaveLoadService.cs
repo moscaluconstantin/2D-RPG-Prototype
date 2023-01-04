@@ -1,5 +1,4 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Player;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Linq;
 using UnityEngine;

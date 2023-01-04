@@ -13,6 +13,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
         [SerializeField] private SceneLoader _sceneLoader;
         [SerializeField] private InventoryService _inventory;
 
+        private ISaveLoadService _saveLoadService;
+
         private void Start()
         {
             InitServices();
@@ -24,12 +26,13 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
         {
             _screenFader.Initialize(_coroutineRunner);
             _sceneLoader.Initialize(_coroutineRunner, _screenFader);
+            _saveLoadService = new SaveLoadService();
 
             ServiceProvider.AddService<ICoroutineRunner>(_coroutineRunner);
             ServiceProvider.AddService<IScreenFader>(_screenFader);
             ServiceProvider.AddService<ISceneLoader>(_sceneLoader);
             ServiceProvider.AddService<IInventoryService>(_inventory);
-            ServiceProvider.AddService<ISaveLoadService>(new SaveLoadService());
+            ServiceProvider.AddService<ISaveLoadService>(_saveLoadService);
             ServiceProvider.AddService<IStatsManager>(new StatsManager(_inventory));
             ServiceProvider.AddService<IQuestsManager>(new QuestsManager());
         }
@@ -37,7 +40,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
         private IEnumerator Startup()
         {
             yield return SceneManager.LoadSceneAsync("UI", LoadSceneMode.Additive);
-            yield return _sceneLoader.LoadScene("Countryside");
+            yield return _sceneLoader.LoadScene(_saveLoadService.PlayerData.SceneName);
         }
     }
 }

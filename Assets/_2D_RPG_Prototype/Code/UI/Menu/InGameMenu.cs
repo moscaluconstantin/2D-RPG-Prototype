@@ -1,4 +1,6 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Enums;
+using Assets._2D_RPG_Prototype.Code.Infrastructure;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,9 +24,12 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
         private Dictionary<MenuContentType, MenuContentButton> _buttonsDictionary;
         private Dictionary<MenuContentType, GameObject> _windowsDictionary;
         private MenuContentType _selectedContentType;
+        private ISaveLoadService _saveLoadService;
 
         private void Start()
         {
+            _saveLoadService = ServiceProvider.GetService<ISaveLoadService>();
+
             InitContentButtons();
             InitContentWindows();
 
@@ -62,10 +67,8 @@ namespace Assets._2D_RPG_Prototype.Code.UI.Menu
             _selectedContentType = contentType;
         }
 
-        public void Save()
-        {
-            print("Save");
-        }
+        public void Save() =>
+            _saveLoadService.Save();
 
         public void Close() =>
             Hide();

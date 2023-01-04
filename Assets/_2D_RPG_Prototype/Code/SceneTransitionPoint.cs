@@ -40,6 +40,7 @@ namespace Assets._2D_RPG_Prototype.Code
             {
                 playerMovement.SetMovementState(false);
 
+                _saveLoad.PlayerData.SceneName = _targetSceneName;
                 _saveLoad.PlayerData.TransitionPointKey = _key;
                 _sceneLoader.LoadScene(_targetSceneName);
             }

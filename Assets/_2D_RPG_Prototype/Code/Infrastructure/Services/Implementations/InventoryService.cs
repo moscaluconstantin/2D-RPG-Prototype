@@ -106,28 +106,25 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
         public void Save()
         {
-            var items = _slots.Select(x => x.Item.Id).ToArray();
-            var counters = _slots.Select(x => x.Count).ToArray();
-
-            SaveLoadService.Save(ItemsSaveKey, items);
-            SaveLoadService.Save(CountersSaveKey, counters);
+            var slotsToSave = _slots.Select(x => new InventorySaveDataSlot(x.Item.Id, x.Count)).ToArray();
+            var dataToSave = new InventorySaveData(slotsToSave);
+            SaveLoadService.Save(ItemsSaveKey, dataToSave);
         }
 
         public void Load()
         {
-            if (!PlayerPrefs.HasKey(ItemsSaveKey) || !PlayerPrefs.HasKey(CountersSaveKey))
+            if (!PlayerPrefs.HasKey(ItemsSaveKey))
                 return;
 
             Clear();
 
             var resourcesDatabase = ServiceProvider.GetService<IResourcesDatabase>();
-            var items = SaveLoadService.Load(ItemsSaveKey, new int[0]);
-            var counters = SaveLoadService.Load(CountersSaveKey, new int[0]);
+            var savedData = SaveLoadService.Load(ItemsSaveKey, new InventorySaveData());
 
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < savedData.Slots.Length; i++)
             {
-                var item = resourcesDatabase.GetInventoryItem(items[i]);
-                Add(item, counters[i]);
+                var item = resourcesDatabase.GetInventoryItem(savedData.Slots[i].ItemId);
+                Add(item, savedData.Slots[i].Count);
             }
         }
     }

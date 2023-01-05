@@ -1,31 +1,17 @@
-﻿using Assets._2D_RPG_Prototype.Code.Constants;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets._2D_RPG_Prototype.Code.NPC
 {
     public abstract class InteractableNPC : MonoBehaviour
     {
-        protected bool Triggered => PlayerInRange && Input.GetButtonUp(InputConstants.FIRE_1);
+        [SerializeField] private NPCTrigger _trigger;
 
-        protected PlayerMovement Player;
-        protected bool PlayerInRange = false;
+        protected virtual void Awake() => 
+            _trigger.OnTrigger += OnTriggered;
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.transform.TryGetComponent(out PlayerMovement playerMovement))
-            {
-                Player = playerMovement;
-                PlayerInRange = true;
-            }
-        }
+        protected virtual void OnDestroy() => 
+            _trigger.OnTrigger -= OnTriggered;
 
-        private void OnTriggerExit2D(Collider2D collision)
-        {
-            if (collision.transform.TryGetComponent(out PlayerMovement _))
-            {
-                Player = null;
-                PlayerInRange = false;
-            }
-        }
+        protected abstract void OnTriggered();
     }
 }

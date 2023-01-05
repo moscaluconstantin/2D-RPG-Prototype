@@ -12,21 +12,16 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
         [SerializeField] private float _cooldown = 2;
         [SerializeField] private bool _hasName = true;
 
-        public bool CanStart => PlayerInRange &&
-            Time.time - _completionTime >= _cooldown;
-
         private DialogueManager _dialogueManager;
         private float _completionTime = 0;
 
         private void Start() =>
             _dialogueManager = ServiceProvider.GetService<IUIService>().GetWindow<DialogueManager>();
 
-        private void Update()
+        protected override void OnTriggered()
         {
-            if (!CanStart || !Triggered)
-                return;
-
-            _dialogueManager.Show(_dialogue, _hasName, OnDialogueCompleted);
+            if (Time.time - _completionTime >= _cooldown)
+                _dialogueManager.Show(_dialogue, _hasName, OnDialogueCompleted);
         }
 
         private void OnDialogueCompleted() =>

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4693229631199731283}
   - component: {fileID: 1034897065799464073}
-  - component: {fileID: 4532024045688530834}
   m_Layer: 0
   m_Name: Dialogue Trigger
   m_TagString: Untagged
@@ -45,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad576915fec16264584b8a745a9e18a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trigger: {fileID: 705024862778643205}
   _dialogue:
     _lines:
     - _owner: Lorelle Starling
@@ -55,32 +55,8 @@ MonoBehaviour:
       _text: Yeah, I know.
     - _owner: Lorelle Starling
       _text: I'm done with this dialog.
---- !u!61 &4532024045688530834
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3817998225387204225}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.25}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  _cooldown: 2
+  _hasName: 1
 --- !u!1001 &5953140501984195516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -91,6 +67,22 @@ PrefabInstance:
     - target: {fileID: 499676123184780887, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
       propertyPath: m_Name
       value: NPC Dialogue Giver
+      objectReference: {fileID: 0}
+    - target: {fileID: 856917492204376008, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540401247739503563, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
+      propertyPath: m_Size.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540401247739503563, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3540401247739503563, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.25
       objectReference: {fileID: 0}
     - target: {fileID: 8084032387007468255, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
       propertyPath: m_RootOrder
@@ -138,6 +130,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
+--- !u!114 &705024862778643205 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6581181678704615609, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
+  m_PrefabInstance: {fileID: 5953140501984195516}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20506c0bc3d2f0419106340c20c247c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2498808541848494435 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8084032387007468255, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}

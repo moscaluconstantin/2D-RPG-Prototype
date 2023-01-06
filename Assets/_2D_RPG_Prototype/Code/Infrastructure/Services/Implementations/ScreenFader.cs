@@ -9,9 +9,11 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
     {
         [SerializeField] private float _fadeDuration = 1f;
         [SerializeField] private CanvasGroup _curtain;
+        public bool IsFading => _isFading;
 
         private ICoroutineRunner _coroutineRunner;
         private Coroutine _currentFade;
+        private bool _isFading = false;
 
         public void Initialize(ICoroutineRunner coroutineRunner) =>
             _coroutineRunner = coroutineRunner;
@@ -30,6 +32,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 
         private IEnumerator FadeCoroutine(FadeType fadeType)
         {
+            _isFading = true;
             float duration = _fadeDuration;
 
             while (duration > 0f)
@@ -43,6 +46,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
             }
 
             _currentFade = null;
+            _isFading = false;
         }
     }
 }

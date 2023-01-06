@@ -1,4 +1,6 @@
-﻿using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
+﻿using Assets._2D_RPG_Prototype.Code.Infrastructure;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Interfaces;
 using Assets._2D_RPG_Prototype.Code.UI.Menu;
 using UnityEngine;
 
@@ -9,12 +11,19 @@ namespace Assets._2D_RPG_Prototype.Code.UI
         [SerializeField] UIService _uiService;
 
         private InGameMenu _inGameMenu;
+        private IScreenFader _screeFader;
 
-        private void Start() =>
+        private void Start()
+        {
             _inGameMenu = _uiService.GetWindow<InGameMenu>();
+            _screeFader = ServiceProvider.GetService<IScreenFader>();
+        }
 
         private void Update()
         {
+            if (_screeFader.IsFading)
+                return;
+
             if (Input.GetKeyUp(KeyCode.Escape))
             {
                 if (_uiService.ActiveWindow is IControlableWindow window)

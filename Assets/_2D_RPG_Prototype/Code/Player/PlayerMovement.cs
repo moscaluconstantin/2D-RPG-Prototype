@@ -14,18 +14,22 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidBody;
     [SerializeField] private PlayerAnimator _animator;
 
-    private bool CanMove => _movementState && !_uiService.AnyWindowActive;
+    private bool CanMove => _movementState && !_uiService.AnyWindowActive && !_screeFader.IsFading;
 
     private const float MIN_INPUT = .1f;
 
     private IUIService _uiService;
+    private IScreenFader _screeFader;
     private bool _movementState = true;
     private Vector2 _input;
     private Vector3 _boundsMin;
     private Vector3 _boundsMax;
 
-    private void Awake() =>
+    private void Awake()
+    {
         _uiService = ServiceProvider.GetService<IUIService>();
+        _screeFader = ServiceProvider.GetService<IScreenFader>();
+    }
 
     private void Update()
     {

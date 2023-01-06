@@ -25,14 +25,15 @@ namespace Assets._2D_RPG_Prototype.Code
         private ISceneLoader _sceneLoader;
         private ICameraController _cameraController;
 
-        private void Start()
+        private void Awake()
         {
             _saveLoad = ServiceProvider.GetService<ISaveLoadService>();
             _sceneLoader = ServiceProvider.GetService<ISceneLoader>();
             _cameraController = ServiceProvider.GetService<ICameraController>();
-
-            TryPlacePlayer();
         }
+
+        private void Start() =>
+            TryPlacePlayer();
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

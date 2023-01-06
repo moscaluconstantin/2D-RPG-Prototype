@@ -12,13 +12,18 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.Quests
         [SerializeField] private string _description;
 
         public event Action OnComplete;
+        public event Action OnStateChanged;
 
         public int Id => _id;
         public string Name => _name;
         public bool IsActive
         {
             get => _isActiv;
-            set => _isActiv = value;
+            set
+            {
+                _isActiv = value;
+                OnStateChanged?.Invoke();
+            }
         }
         public bool IsCompleted
         {
@@ -29,6 +34,8 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.Quests
 
                 if (_isCompleted)
                     OnComplete?.Invoke();
+
+                OnStateChanged?.Invoke();
             }
         }
 

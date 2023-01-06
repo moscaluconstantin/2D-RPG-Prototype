@@ -18,8 +18,8 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
         public void Save()
         {
             _playerData.Save();
-
             OnSave?.Invoke();
+            PlayerPrefs.Save();
         }
 
         public static void Save(string key, string value) =>

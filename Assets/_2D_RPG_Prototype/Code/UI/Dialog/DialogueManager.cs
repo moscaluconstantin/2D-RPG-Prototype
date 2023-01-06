@@ -125,7 +125,17 @@ namespace Assets._2D_RPG_Prototype.Code.UI
 
             for (int i = 0; i < _currentLine.Text.Length; i++)
             {
-                _stringBuilder.Append(_currentLine.Text[i]);
+                char currentChar = _currentLine.Text[i];
+                string textToShow = $"{currentChar}";
+
+                if (currentChar == '<')
+                {
+                    int lastCharIndex = _currentLine.Text.IndexOf('>', i);
+                    textToShow = _currentLine.Text.Substring(i, lastCharIndex - i + 1);
+                    i = lastCharIndex;
+                }
+
+                _stringBuilder.Append(textToShow);
                 _dialogueText.SetText(_stringBuilder.ToString());
 
                 yield return delay;

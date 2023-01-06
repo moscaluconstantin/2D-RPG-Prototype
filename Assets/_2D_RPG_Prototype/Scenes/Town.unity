@@ -6098,6 +6098,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._quest
+      value: 
+      objectReference: {fileID: 11400000, guid: 6053381456d9036428b089b878b5b7e7, type: 2}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._onStartActions.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._inProgressActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._onCompleteActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._onStartActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: efe21f30f6c4cf7478f9a859061b8de3, type: 2}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._onStartActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b77e9fb85945e5540a30cdc77dce2a67, type: 2}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._inProgressActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9542599e53cef8e40b91e42a8bdd0aa4, type: 2}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._onCompleteActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c84524fc4997af42b6df6e5ebced057, type: 2}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._onCompleteActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: db8a580135054e945bf493f87fa85953, type: 2}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._completionCheckActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4798821196276660929, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
+      propertyPath: _questsData.Array.data[1]._completionCheckActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b722646750ff3e4e9cb91a370c52aef, type: 2}
     - target: {fileID: 8586451328682297903, guid: f47616e8d25131f4393eb2c96c0d29eb, type: 3}
       propertyPath: m_Name
       value: NPC Lorelle Starling

@@ -50,6 +50,7 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
                 {
                     questData.RunOnCompleteActions();
                     questData.Quest.IsActive = false;
+                    return;
                 }
             }
 

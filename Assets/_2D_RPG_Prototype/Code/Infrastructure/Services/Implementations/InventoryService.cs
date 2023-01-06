@@ -18,8 +18,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
         public event Action OnItemsCountChanged;
 
         public InventoryItem[] Items => _slots.Select(x => x.Item).ToArray();
-        private string ItemsSaveKey => $"{_saveKey}_{SaveKeys.INVENTORY_ITEMS}";
-        private string CountersSaveKey => $"{_saveKey}_{SaveKeys.INVENTORY_COUNTERS}";
+        private string ItemsSaveKey => $"{_saveKey}_{SaveKeys.INVENTORY}";
 
         private void Awake() =>
             SortItems();

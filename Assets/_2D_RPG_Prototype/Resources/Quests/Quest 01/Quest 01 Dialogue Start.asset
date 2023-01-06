@@ -23,6 +23,6 @@ MonoBehaviour:
     - _owner: Tim
       _text: Sorry but I don't have a <sprite=0>.
     - _owner: Lorelle Starling
-      _text: There is a shop in the netxt building, please take this <sprite=43>.
+      _text: There is a shop in the next building, please take this <sprite=43>.
     - _owner: Tim
       _text: She lost her conscious. I should hurry up.

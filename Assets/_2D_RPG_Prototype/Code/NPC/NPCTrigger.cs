@@ -8,12 +8,16 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
     {
         public event Action OnTrigger;
 
+        private bool _triggered = false;
         private bool _playerInRange = false;
 
         private void Update()
         {
-            if (_playerInRange && Input.GetButtonUp(InputConstants.FIRE_1))
-                OnTrigger?.Invoke();
+            if (!_playerInRange || !Input.GetButtonUp(InputConstants.FIRE_1) || _triggered)
+                return;
+
+            _triggered = true;
+            OnTrigger?.Invoke();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -25,7 +29,10 @@ namespace Assets._2D_RPG_Prototype.Code.NPC
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.transform.TryGetComponent(out PlayerMovement _))
+            {
                 _playerInRange = false;
+                _triggered = false;
+            }
         }
     }
 }

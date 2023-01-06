@@ -7,7 +7,7 @@
         public const string PROGRESSIONS = BASE_PATH + "Progressions/";
         public const string INVENTORY_ITEMS = BASE_PATH + "InventoryItems/";
         public const string QUESTS = BASE_PATH + "Quests/";
-        public const string QUEST_ACTIONS = BASE_PATH + "Quests/Actions";
-        public const string QUEST_CHECK_ACTIONS = BASE_PATH + "Quests/Check Actions";
+        public const string QUEST_ACTIONS = BASE_PATH + "Quests/Actions/";
+        public const string QUEST_CHECK_ACTIONS = BASE_PATH + "Quests/Check Actions/";
     }
 }

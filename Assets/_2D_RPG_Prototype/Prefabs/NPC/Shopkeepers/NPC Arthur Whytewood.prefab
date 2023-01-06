@@ -148,10 +148,6 @@ PrefabInstance:
       value: -1.4
       objectReference: {fileID: 0}
     - target: {fileID: 4258248575807026519, guid: 1bc2ada34dec29a4c98578e498b94afe, type: 3}
-      propertyPath: _trigger
-      value: 
-      objectReference: {fileID: 284879195807584988}
-    - target: {fileID: 4258248575807026519, guid: 1bc2ada34dec29a4c98578e498b94afe, type: 3}
       propertyPath: _forSale.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -853,21 +849,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8367993680943928371, guid: 1bc2ada34dec29a4c98578e498b94afe, type: 3}
       propertyPath: m_Name
-      value: NPC Shopkeeper 1
+      value: NPC Arthur Whytewood
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1bc2ada34dec29a4c98578e498b94afe, type: 3}
---- !u!114 &284879195807584988 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2998039446163776221, guid: 1bc2ada34dec29a4c98578e498b94afe, type: 3}
-  m_PrefabInstance: {fileID: 3057720823536283649}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c20506c0bc3d2f0419106340c20c247c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8414307619168058622 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6821428213834452223, guid: 1bc2ada34dec29a4c98578e498b94afe, type: 3}

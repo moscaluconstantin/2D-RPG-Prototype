@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71bb3c4d796ec8045a22354add28193a, type: 3}
+  m_Name: Quest 01 Dialogue Complete
+  m_EditorClassIdentifier: 
+  _dialogue:
+    _lines:
+    - _owner: Tim
+      _text: Here, take this <sprite=0>.
+    - _owner: Lorelle Starling
+      _text: Drinking...
+    - _owner: Lorelle Starling
+      _text: Thank you for saving me, now I'm feeling better.

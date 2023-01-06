@@ -139,6 +139,66 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC Lorelle Starling
       objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._quest
+      value: 
+      objectReference: {fileID: 11400000, guid: 7961cc7a0f114374e9c92bd48d66fc1a, type: 2}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _defaultDialogue._lines.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _defaultDialogue._lines.Array.data[0]._text
+      value: Hi.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _defaultDialogue._lines.Array.data[0]._owner
+      value: Lorelle Starling
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._onStartActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._inProgressActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._onCompleteActions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._onStartActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: efe21f30f6c4cf7478f9a859061b8de3, type: 2}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._onStartActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: b77e9fb85945e5540a30cdc77dce2a67, type: 2}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._inProgressActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9542599e53cef8e40b91e42a8bdd0aa4, type: 2}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._onCompleteActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c84524fc4997af42b6df6e5ebced057, type: 2}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._onCompleteActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: db8a580135054e945bf493f87fa85953, type: 2}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._completionCheckActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7044506101400409349, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
+      propertyPath: _questsData.Array.data[0]._completionCheckActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b722646750ff3e4e9cb91a370c52aef, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e382623099a94cd45a3a57e89dc84aa1, type: 3}
 --- !u!4 &6747151759359365859 stripped

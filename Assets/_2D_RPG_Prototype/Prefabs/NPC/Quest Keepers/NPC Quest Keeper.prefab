@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3817998225387204225
+--- !u!1 &6743065926877883432
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,55 +8,44 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4693229631199731283}
-  - component: {fileID: 1034897065799464073}
+  - component: {fileID: 4031641163661182991}
+  - component: {fileID: 7044506101400409349}
   m_Layer: 0
-  m_Name: Dialogue Trigger
+  m_Name: Quest Keeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4693229631199731283
+--- !u!4 &4031641163661182991
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3817998225387204225}
+  m_GameObject: {fileID: 6743065926877883432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2498808541848494435}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1034897065799464073
+--- !u!114 &7044506101400409349
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3817998225387204225}
+  m_GameObject: {fileID: 6743065926877883432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad576915fec16264584b8a745a9e18a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bf1cc4ffbb80c240ab9c00c68d1d6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _trigger: {fileID: 705024862778643205}
-  _dialogue:
-    _lines:
-    - _owner: Lorelle Starling
-      _text: This is a test dialog.
-    - _owner: Player
-      _text: Oh, intersting.
-    - _owner: Lorelle Starling
-      _text: Yeah, I know.
-    - _owner: Lorelle Starling
-      _text: I'm done with this dialog.
-  _cooldown: 2
-  _hasName: 1
+  _questsData: []
 --- !u!1001 &5953140501984195516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,11 +55,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 499676123184780887, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
       propertyPath: m_Name
-      value: NPC Dialogue Giver
+      value: NPC Quest Keeper
       objectReference: {fileID: 0}
     - target: {fileID: 856917492204376008, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3540401247739503563, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
       propertyPath: m_Size.x

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20e7b640bf25d7b4dbc10e755dc94276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _trigger: {fileID: 2998039446163776221}
   _forSale: []
   _forBuying: []
   _inventory: {fileID: 7599931594708599349}
@@ -141,3 +142,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8084032387007468255, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
   m_PrefabInstance: {fileID: 8272586002725077604}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2998039446163776221 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6581181678704615609, guid: f0ca8bedee9cd3a4eb5d9f1e19f61200, type: 3}
+  m_PrefabInstance: {fileID: 8272586002725077604}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20506c0bc3d2f0419106340c20c247c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -45,10 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _saveKey: player
-  _slots:
-  - Item: {fileID: 11400000, guid: a2d03c5027ccbfb47a84bdd572324abb, type: 2}
-    Count: 3
-  - Item: {fileID: 11400000, guid: 7551b15811cbe5246ad45f94d514f5b3, type: 2}
-    Count: 3
-  - Item: {fileID: 11400000, guid: 9a4518b076a707c4fbc5b07a99570869, type: 2}
-    Count: 100
+  _slots: []

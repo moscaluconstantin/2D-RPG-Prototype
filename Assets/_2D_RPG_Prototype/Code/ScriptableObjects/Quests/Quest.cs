@@ -1,4 +1,6 @@
 ﻿using Assets._2D_RPG_Prototype.Code.Constants;
+using Assets._2D_RPG_Prototype.Code.Data;
+using Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations;
 using System;
 using UnityEngine;
 
@@ -13,6 +15,8 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.Quests
 
         public event Action OnComplete;
         public event Action OnStateChanged;
+
+        private string SaveKey => $"{SaveKeys.QUEST}_{_id}";
 
         public int Id => _id;
         public string Name => _name;
@@ -42,11 +46,18 @@ namespace Assets._2D_RPG_Prototype.Code.ScriptableObjects.Quests
         private bool _isActiv;
         private bool _isCompleted;
 
-        public void Initialize()
+        public void Load()
         {
-            //load saved state
-            _isActiv = false;
-            _isCompleted = false;
+            var savedData = SaveLoadService.Load(SaveKey, default(QuestState));
+
+            _isActiv = savedData.ActiveState;
+            _isCompleted = savedData.CompletedState;
+        }
+
+        public void Save()
+        {
+            var dataToSave = new QuestState(_isActiv, _isCompleted);
+            SaveLoadService.Save(SaveKey, dataToSave);
         }
 
         public virtual string GetDescription() =>

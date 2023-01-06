@@ -38,7 +38,7 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure
             ServiceProvider.AddService<IInventoryService>(_inventory);
             ServiceProvider.AddService<ISaveLoadService>(_saveLoadService);
             ServiceProvider.AddService<IStatsManager>(new StatsManager(_inventory));
-            ServiceProvider.AddService<IQuestsManager>(new QuestsManager());
+            ServiceProvider.AddService<IQuestsManager>(new QuestsManager(_saveLoadService));
         }
 
         private IEnumerator Startup()

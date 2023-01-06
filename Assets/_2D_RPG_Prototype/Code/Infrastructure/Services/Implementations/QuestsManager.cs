@@ -7,14 +7,29 @@ namespace Assets._2D_RPG_Prototype.Code.Infrastructure.Services.Implementations
 {
     public class QuestsManager : IQuestsManager
     {
+        private ISaveLoadService _saveLoadService;
         private Quest[] _quests;
 
-        public QuestsManager()
+        public QuestsManager(ISaveLoadService saveLoadService)
         {
+            _saveLoadService = saveLoadService;
             _quests = Resources.LoadAll<Quest>(ResourcePaths.QUESTS);
 
+            LoadAll();
+
+            _saveLoadService.OnSave += SaveAll;
+        }
+
+        private void LoadAll()
+        {
             foreach (var quest in _quests)
-                quest.Initialize();
+                quest.Load();
+        }
+
+        private void SaveAll()
+        {
+            foreach (var quest in _quests)
+                quest.Save();
         }
     }
 }
